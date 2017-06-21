@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Listeners\OrderConfirmedListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,14 @@
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
       <Project>{f8d43559-8792-498b-ab51-211ca04cb4df}</Project>
       <Name>DDD.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj">
+      <Project>{1f25c4fb-d5ea-46bb-ab2b-ac5582e1aa9e}</Project>
+      <Name>DDD.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoStock.Invoicing.Contract\PhotoStock.Invoicing.Contract.csproj">
+      <Project>{265016F3-AE52-4167-926A-52924366E7DD}</Project>
+      <Name>PhotoStock.Invoicing.Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj">
       <Project>{EA7D831A-03D1-4A08-805C-3E450EA024BC}</Project>
@@ -64,10 +73,7 @@
       <Name>PhotoStock.Shipping.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-    <Folder Include="Listeners\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

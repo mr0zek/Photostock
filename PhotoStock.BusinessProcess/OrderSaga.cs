@@ -1,12 +1,9 @@
 ﻿using Automatonymous;
 using CQRS.Base.Command;
-using PhotoStock.Invoicing.Contract.Commands;
 using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.Sales.Contract.Events;
-using PhotoStock.Shipping.Contract.Commands;
 using PhotoStock.Shipping.Contract.Events;
 using System.Linq;
-using OrderItem = PhotoStock.Invoicing.Contract.Commands.OrderItem;
 
 namespace PhotoStock.BusinessProcess
 {

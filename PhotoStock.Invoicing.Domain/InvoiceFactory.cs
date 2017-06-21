@@ -1,5 +1,4 @@
 using DDD.Base.Domain;
-using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.SharedKernel;
 using System;
 
@@ -21,7 +20,6 @@ namespace PhotoStock.Invoicing.Domain
     public Invoice Create(AggregateId orderId, ClientData clientData)
     {
       AggregateId number = _numberGenerator.GenerateNextInvoiceNumber();
-      _eventPublisher.Publish(new OrderInvoicedEvent(orderId, number));
 
       Invoice invoice = new Invoice(number, clientData);
       _dependencyInjector.InjectDependencies(invoice);
