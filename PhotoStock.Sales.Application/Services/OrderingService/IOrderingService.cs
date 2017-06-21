@@ -1,4 +1,7 @@
-namespace PhotoStock.Sales.Contract
+using DDD.Base.Domain;
+using PhotoStock.Sales.Domain.Offer;
+
+namespace PhotoStock.Sales.Application.Services.OrderingService
 {
   public interface IOrderingService
   {
