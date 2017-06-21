@@ -1,5 +1,4 @@
 using DDD.Base.Domain;
-using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.SharedKernel;
 using System;
 
