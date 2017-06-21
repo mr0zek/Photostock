@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientRepository.cs" />
-    <Compile Include="EventPublisher.cs" />
+    <Compile Include="DomainEventPublisher.cs" />
     <Compile Include="FakeSession.cs" />
     <Compile Include="OrderConfirmedEventBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

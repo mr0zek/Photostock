@@ -19,6 +19,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
     private IPurchaseFactory _purchaseFactory;
     private IPurchaseRepository _purchaseRepository;
     private IProductRepository _productRepository;
+    private IDiscountFactory _discountFactory;
 
     public OrderingService(
       ISystemContext systemContext,
@@ -37,6 +38,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
       _purchaseFactory = purchaseFactory;
       _purchaseRepository = purchaseRepository;
       _productRepository = productRepository;
+      _discountFactory = discountFactory;
     }
 
     public AggregateId CreateOrder()
@@ -60,14 +62,17 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
     public Offer CalculateOffer(AggregateId orderId)
     {
       Reservation reservation = _reservationRepository.Load(orderId);
-      return reservation.CalculateOffer();
+
+      IDiscountPolicy discountPolicy = _discountFactory.Create(LoadClient());
+
+      return reservation.CalculateOffer(discountPolicy);
     }
 
     //TODO: Transactions, dynamic proxy ?
     public void Confirm(AggregateId orderId, Offer seenOffer)
     {
       Reservation reservation = _reservationRepository.Load(orderId);
-      Offer newOffer = reservation.CalculateOffer();
+      Offer newOffer = reservation.CalculateOffer(_discountFactory.Create(LoadClient()));
 
       if (!newOffer.SameAs(seenOffer, 5))
       {
@@ -76,15 +81,15 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
 
       Client client = LoadClient();
 
-      if (!client.CanAfford(seenOffer.TotalCost))
+      if (!client.CanAfford(newOffer.TotalCost))
       {
-        throw new NotEnoughMoneyException(seenOffer.TotalCost);
+        throw new NotEnoughMoneyException(newOffer.TotalCost);
       }
 
-      client.Charge(seenOffer.TotalCost);
+      client.Charge(newOffer.TotalCost);
       _clientRepository.Save(client);
 
-      Purchase purchase = _purchaseFactory.Create(orderId, client, seenOffer);
+      Purchase purchase = _purchaseFactory.Create(orderId, client, newOffer);
       _purchaseRepository.Save(purchase);
 
       reservation.Close();

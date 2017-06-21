@@ -5,6 +5,6 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
 {
   public interface IDiscountPolicy
   {
-    Discount ApplyDiscount(/* TODO: add parameters here */);
+    Discount ApplyDiscount(ProductData product);
   }
 }
