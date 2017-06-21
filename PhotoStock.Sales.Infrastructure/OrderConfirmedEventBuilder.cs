@@ -21,7 +21,7 @@ namespace Photostock.Sales.Infrastructure
 
     public void ExportItem(ProductData productData, Money totalCost)
     {
-      _items.Add(new OrderItem() { ProductData = productData, TotalCost = totalCost });
+      _items.Add(new OrderItem() { ProductData = productData });
     }
 
     public void ExportId(AggregateId purchaseId)

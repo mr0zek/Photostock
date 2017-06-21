@@ -11,7 +11,6 @@
     <AssemblyName>DDD.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,11 +77,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj">
-      <Project>{7d8d2feb-c2e5-4d54-8369-21de2d44984a}</Project>
+      <Project>{7D8D2FEB-C2E5-4D54-8369-21DE2D44984A}</Project>
       <Name>CQRS.Base</Name>
     </ProjectReference>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
-      <Project>{f8d43559-8792-498b-ab51-211ca04cb4df}</Project>
+      <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>
       <Name>DDD.Base</Name>
     </ProjectReference>
   </ItemGroup>
