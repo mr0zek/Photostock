@@ -22,13 +22,13 @@ namespace PhotoStock.Sales.Domain.Offer
       get { return _unavailableItems; }
     }
 
-    public Money TotalCost { get; private set;}
+    public Money TotalCost { get; private set; }
     public AggregateId ClientId { get; private set; }
     public Address ShipingAddress { get; set; }
 
     public Offer(AggregateId clientId, List<OfferItem> availabeItems, List<OfferItem> unavailableItems)
     {
-        TotalCost = Money.ZERO;
+      TotalCost = Money.ZERO;
       ClientId = clientId;
       _availableItems = availabeItems;
       _unavailableItems = unavailableItems;
@@ -41,8 +41,21 @@ namespace PhotoStock.Sales.Domain.Offer
 
     public bool SameAs(Offer seenOffer, double delta)
     {
-      //TODO:
-      throw new NotImplementedException();
+      if (_availableItems.Count != seenOffer._availableItems.Count)
+      {
+        return false;
+      }
+
+      foreach (OfferItem item in _availableItems)
+      {
+        OfferItem sameItem = seenOffer.FindItem(item.ProductData.ProductId);
+        if (sameItem == null)
+          return false;
+        if (!sameItem.SameAs(item, delta))
+          return false;
+      }
+
+      return true;
     }
 
     private OfferItem FindItem(AggregateId productId)
