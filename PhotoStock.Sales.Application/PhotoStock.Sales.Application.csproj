@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\OrderingService\IOrderingService.cs" />
+    <Compile Include="Services\OrderingService\NotEnoughMoneyException.cs" />
+    <Compile Include="Services\OrderingService\OfferChangedExcpetion.cs" />
     <Compile Include="Services\PurchaseService\IPaymentService.cs" />
     <Compile Include="Services\OrderingService\OrderingService.cs" />
     <Compile Include="Services\PurchaseService\PaymentService.cs" />

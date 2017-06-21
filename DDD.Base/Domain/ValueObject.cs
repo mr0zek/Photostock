@@ -122,7 +122,7 @@ namespace DDD.Base.Domain
       return fields;
     }
 
-    public bool Equals(object x, object y)
+    public new bool Equals(object x, object y)
     {
       if (ReferenceEquals(x, null) && ReferenceEquals(y, null))
       {

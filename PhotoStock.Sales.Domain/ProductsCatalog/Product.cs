@@ -25,5 +25,11 @@ namespace PhotoStock.Sales.Domain.ProductsCatalog
     {
       return new ProductData(AggregateId, Price, Name, ProductType);
     }
-  }
+
+      public bool CanBeSold()
+      {
+          return !IsRemoved();//TODO explore domain rules
+      }
+
+    }
 }

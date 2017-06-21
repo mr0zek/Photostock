@@ -67,6 +67,7 @@
     <Compile Include="Reservation\ReservationFactory.cs" />
     <Compile Include="Reservation\IReservationRepository.cs" />
     <Compile Include="Offer\Specification\DebtorSpecification.cs" />
+    <Compile Include="Reservation\ReservationItem.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
