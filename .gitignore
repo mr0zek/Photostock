@@ -1,0 +1,9 @@
+*/bin/*
+packages/
+bin/
+*.suo
+desktop.ini
+*.user
+**/obj/*
+*.mdf
+*.ldf

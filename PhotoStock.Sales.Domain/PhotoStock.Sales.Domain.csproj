@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2230C68D-558A-463F-B3ED-427968DECB2E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PhotoStock.Sales.Domain</RootNamespace>
+    <AssemblyName>PhotoStock.Sales.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\Client.cs" />
+    <Compile Include="Client\IClientRepository.cs" />
+    <Compile Include="Offer\Address.cs" />
+    <Compile Include="Offer\Discount\Discount.cs" />
+    <Compile Include="Offer\Discount\DiscountFactory.cs" />
+    <Compile Include="Offer\Discount\DiscountPolicy.cs" />
+    <Compile Include="Offer\Discount\IDiscountFactory.cs" />
+    <Compile Include="Offer\Discount\IDiscountPolicy.cs" />
+    <Compile Include="Offer\Offer.cs" />
+    <Compile Include="Offer\OfferItem.cs" />
+    <Compile Include="Offer\Specification\IOfferSpecificationFactory.cs" />
+    <Compile Include="Offer\Specification\OfferSpecificationFactory.cs" />
+    <Compile Include="ProductsCatalog\IProductRepository.cs" />
+    <Compile Include="ProductsCatalog\Product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase\IPurchaseFactory.cs" />
+    <Compile Include="Purchase\Purchase.cs" />
+    <Compile Include="Purchase\PurchaseConfirmedEvent.cs" />
+    <Compile Include="Purchase\PurchaseFactory.cs" />
+    <Compile Include="Purchase\PurchaseItem.cs" />
+    <Compile Include="Purchase\IPurchaseRepository.cs" />
+    <Compile Include="Reservation\IReservationFactory.cs" />
+    <Compile Include="Reservation\Reservation.cs" />
+    <Compile Include="Reservation\ReservationCreatedEvent.cs" />
+    <Compile Include="Reservation\ReservationFactory.cs" />
+    <Compile Include="Reservation\IReservationRepository.cs" />
+    <Compile Include="Offer\Specification\DebtorSpecification.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
+      <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>
+      <Name>DDD.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoStock.SharedKernel\PhotoStock.SharedKernel.csproj">
+      <Project>{266FF480-2B3A-40C5-B01C-721C9A4D79D3}</Project>
+      <Name>PhotoStock.SharedKernel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
