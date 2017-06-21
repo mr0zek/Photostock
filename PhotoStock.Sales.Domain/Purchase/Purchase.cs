@@ -31,5 +31,15 @@ namespace PhotoStock.Sales.Domain.Purchase
       IsPaid = true;
       EventPublisher.Publish(new PurchaseConfirmedEvent(AggregateId));
     }
+
+    public void Export(IPurchaseExporter builder)
+    {
+      builder.ExportId(AggregateId);
+      builder.ExportClientId(ClientId);
+      foreach (PurchaseItem purchaseItem in _items)
+      {
+        builder.ExportItem(purchaseItem.ProductData, purchaseItem.TotalCost);
+      }
+    }
   }
 }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Photostock.Sales.Infrastructure
 {
-  internal class OrderConfirmedEventBuilder
+  internal class OrderConfirmedEventBuilder : IPurchaseExporter
   {
     private AggregateId _orderId;
     private ClientData _clientData;
@@ -17,6 +17,21 @@ namespace Photostock.Sales.Infrastructure
     public OrderConfirmedEventBuilder(IClientRepository clientRepository)
     {
       _clientRepository = clientRepository;
+    }
+
+    public void ExportItem(ProductData productData, Money totalCost)
+    {
+      _items.Add(new OrderItem() { ProductData = productData, TotalCost = totalCost });
+    }
+
+    public void ExportId(AggregateId purchaseId)
+    {
+      _orderId = purchaseId;
+    }
+
+    public void ExportClientId(AggregateId clientId)
+    {
+      _clientData = _clientRepository.Load(clientId).GenerateSnapshot();
     }
 
     public ISystemEvent Build()

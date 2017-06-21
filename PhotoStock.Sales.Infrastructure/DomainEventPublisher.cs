@@ -29,10 +29,10 @@ namespace Photostock.Sales.Infrastructure
 
     private ISystemEvent PurchaseConfirmedHandler(PurchaseConfirmedEvent purchaseConfirmedEvent)
     {
-      //Use builder here
-
-
-      throw new NotImplementedException();
+      Purchase purchase = _purchaseRepository.Load(purchaseConfirmedEvent.PurchaseId);
+      OrderConfirmedEventBuilder builder = new OrderConfirmedEventBuilder(_clientRepository);
+      purchase.Export(builder);
+      return builder.Build();
     }
 
     private ISystemEvent ReservationCreatedHandler(ReservationCreatedEvent f)
