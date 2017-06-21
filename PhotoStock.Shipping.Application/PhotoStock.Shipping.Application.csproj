@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Listeners\OrderConfirmedListener.cs" />
+    <Compile Include="Handlers\ShipOrderCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,10 +55,6 @@
     <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj">
       <Project>{1f25c4fb-d5ea-46bb-ab2b-ac5582e1aa9e}</Project>
       <Name>DDD.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhotoStock.Invoicing.Contract\PhotoStock.Invoicing.Contract.csproj">
-      <Project>{265016F3-AE52-4167-926A-52924366E7DD}</Project>
-      <Name>PhotoStock.Invoicing.Contract</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj">
       <Project>{EA7D831A-03D1-4A08-805C-3E450EA024BC}</Project>

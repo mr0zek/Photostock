@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\InvoiceOrderCommand.cs" />
+    <Compile Include="Commands\OrderItem.cs" />
     <Compile Include="Events\OrderInvoicedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -47,10 +49,6 @@
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
       <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>
       <Name>DDD.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj">
-      <Project>{1F25C4FB-D5EA-46BB-AB2B-AC5582E1AA9E}</Project>
-      <Name>DDD.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj">
       <Project>{EA7D831A-03D1-4A08-805C-3E450EA024BC}</Project>
