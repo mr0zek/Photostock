@@ -7,29 +7,28 @@ namespace PhotoStock.Sales.Domain.ProductsCatalog
 {
   public class Product : AggregateRoot
   {
-      public Money Price { get; private set; }
+    private Money _price;
 
-      public string Name { get; private set; }
+    private string _name;
 
-      public ProductType ProductType { get; private set; }
+    private ProductType _productType;
 
     private Product(AggregateId aggregateId, Money price, String name, ProductType productType)
       : base(aggregateId)
     {
-      Price = price;
-      Name = name;
-      ProductType = productType;
+      _price = price;
+      _name = name;
+      _productType = productType;
     }
 
     public ProductData GenerateSnapshot()
     {
-      return new ProductData(AggregateId, Price, Name, ProductType);
+      return new ProductData(AggregateId, _price, _name, _productType);
     }
 
-      public bool CanBeSold()
-      {
-          return !IsRemoved();//TODO explore domain rules
-      }
-
+    public bool CanBeSold()
+    {
+      return !IsRemoved();//TODO explore domain rules
     }
+  }
 }
