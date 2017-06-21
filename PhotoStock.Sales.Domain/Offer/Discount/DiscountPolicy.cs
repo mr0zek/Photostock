@@ -6,7 +6,7 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
 {
   internal class DiscountPolicy : IDiscountPolicy
   {
-    public Discount ApplyDiscount()
+    public Discount ApplyDiscount(/*TODO add params here */)
     {
       //TODO;
       throw new NotImplementedException();
