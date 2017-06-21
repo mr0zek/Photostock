@@ -5,6 +5,6 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
 {
   public interface IDiscountPolicy
   {
-    Discount ApplyDiscount(ProductData product);
+    Discount ApplyDiscount(Product product, Money regularCost, Money totalCost);
   }
 }

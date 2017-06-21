@@ -6,17 +6,12 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
   {
     public IDiscountPolicy Create(Client.Client client)
     {
-      IDiscountPolicy treeGrass = new DiscountPolicy();
-      if (IsEve()) // Eve
+      IDiscountPolicy result = new DiscountPolicy();
+      if (DateTime.Today.Month == 12 && DateTime.Today.Day == 24) // Eve
       {
-        return new PercentDiscountPolicy(treeGrass, "Eve", 10);
+        return new PercentDiscountPolicyDecorator(result, "Eve", 10);
       }
-      return treeGrass;
-    }
-
-    private bool IsEve()
-    {
-      return DateTime.Today.Month == 12 && DateTime.Now.Day == 24
+      return result;
     }
   }
 }

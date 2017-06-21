@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Photostock.Sales.Infrastructure
 {
-  public class EventPublisher : IDomainEventPublisher
+  public class DomainEventPublisher : IDomainEventPublisher
   {
     private ISystemEventPublisher _systemEventPublisher;
     private IPurchaseRepository _purchaseRepository;
     private IDictionary<Type, Func<IDomainEvent, ISystemEvent>> _handlers = new Dictionary<Type, Func<IDomainEvent, ISystemEvent>>();
     private IClientRepository _clientRepository;
 
-    public EventPublisher(ISystemEventPublisher systemEventPublisher, IClientRepository clientRepository, IPurchaseRepository purchaseRepository)
+    public DomainEventPublisher(ISystemEventPublisher systemEventPublisher, IClientRepository clientRepository, IPurchaseRepository purchaseRepository)
     {
       _systemEventPublisher = systemEventPublisher;
       _clientRepository = clientRepository;
@@ -29,10 +29,9 @@ namespace Photostock.Sales.Infrastructure
 
     private ISystemEvent PurchaseConfirmedHandler(PurchaseConfirmedEvent purchaseConfirmedEvent)
     {
-      Purchase purchase = _purchaseRepository.Load(purchaseConfirmedEvent.PurchaseId);
-      OrderConfirmedEventBuilder builder = new OrderConfirmedEventBuilder(_clientRepository);
+      //Use builder here
 
-      //TODO:
+
       throw new NotImplementedException();
     }
 

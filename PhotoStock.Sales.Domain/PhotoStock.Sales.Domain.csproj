@@ -48,7 +48,7 @@
     <Compile Include="Offer\Discount\DiscountPolicy.cs" />
     <Compile Include="Offer\Discount\IDiscountFactory.cs" />
     <Compile Include="Offer\Discount\IDiscountPolicy.cs" />
-    <Compile Include="Offer\Discount\PercentDiscountPolicy.cs" />
+    <Compile Include="Offer\Discount\PercentDiscountPolicyDecorator.cs" />
     <Compile Include="Offer\Offer.cs" />
     <Compile Include="Offer\OfferItem.cs" />
     <Compile Include="Offer\Specification\IOfferSpecificationFactory.cs" />
