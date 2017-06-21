@@ -1,16 +1,16 @@
 using DDD.Base.Domain;
-using Photostock.Sales.Infrastructure;
 
 namespace PhotoStock.Invoicing.Domain
 {
-  public class OrderInvoicedEvent : ISystemEvent
+  public class OrderInvoicedEvent : IDomainEvent
   {
     public AggregateId OrderId { get; }
     public AggregateId InvoiceNumber { get; }
 
-    public OrderInvoicedEvent(AggregateId orderId)
+    public OrderInvoicedEvent(AggregateId orderId, AggregateId invoiceNumber)
     {
       OrderId = orderId;
+      InvoiceNumber = invoiceNumber;
     }
   }
 }
