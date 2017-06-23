@@ -60,6 +60,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
     public Offer CalculateOffer(AggregateId orderId)
     {
       Reservation reservation = _reservationRepository.Load(orderId);
+      
       return reservation.CalculateOffer();
     }
 
@@ -80,7 +81,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
       {
         throw new NotEnoughMoneyException(seenOffer.TotalCost);
       }
-
+    
       client.Charge(seenOffer.TotalCost);
       _clientRepository.Save(client);
 

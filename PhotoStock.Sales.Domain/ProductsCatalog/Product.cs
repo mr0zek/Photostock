@@ -7,7 +7,7 @@ namespace PhotoStock.Sales.Domain.ProductsCatalog
 {
   public class Product : AggregateRoot
   {
-    private Money _price;
+    internal Money Price { get; private set; }
 
     private string _name;
 
@@ -16,14 +16,14 @@ namespace PhotoStock.Sales.Domain.ProductsCatalog
     private Product(AggregateId aggregateId, Money price, String name, ProductType productType)
       : base(aggregateId)
     {
-      _price = price;
+      Price = price;
       _name = name;
       _productType = productType;
     }
 
     public ProductData GenerateSnapshot()
     {
-      return new ProductData(AggregateId, _price, _name, _productType);
+      return new ProductData(AggregateId, Price, _name, _productType);
     }
 
     public bool CanBeSold()

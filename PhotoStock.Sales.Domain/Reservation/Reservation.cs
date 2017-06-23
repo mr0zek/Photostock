@@ -62,16 +62,6 @@ namespace PhotoStock.Sales.Domain.Reservation
       List<OfferItem> availabeItems = new List<OfferItem>();
       List<OfferItem> unavailableItems = new List<OfferItem>();
 
-      Money totalCost = 0;
-      foreach (ReservationItem item in _items)
-      {
-        Product product = _productRepository.Load(item.ProductId);
-        if (product.CanBeSold())
-        {
-          totalCost += product.Price;
-        }
-      }
-
       foreach (ReservationItem item in _items)
       {
         Product product = _productRepository.Load(item.ProductId);
