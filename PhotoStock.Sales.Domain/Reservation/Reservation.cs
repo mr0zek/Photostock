@@ -55,41 +55,6 @@ namespace PhotoStock.Sales.Domain.Reservation
         DomainError("Reservation is already closed");
       }
       _status = ReservationStatus.CLOSED;
-    }
-
-    public Offer.Offer CalculateOffer()
-    {
-      List<OfferItem> availabeItems = new List<OfferItem>();
-      List<OfferItem> unavailableItems = new List<OfferItem>();
-
-      Money totalCost = 0;
-      foreach (ReservationItem item in _items)
-      {
-        Product product = _productRepository.Load(item.ProductId);
-        if (product.CanBeSold())
-        {
-          totalCost += product.Price;
-        }
-      }
-
-      foreach (ReservationItem item in _items)
-      {
-        Product product = _productRepository.Load(item.ProductId);
-        if (product.CanBeSold())
-        {
-          OfferItem offerItem = new OfferItem(product.GenerateSnapshot());
-
-          availabeItems.Add(offerItem);
-        }
-        else
-        {
-          OfferItem offerItem = new OfferItem(product.GenerateSnapshot());
-
-          unavailableItems.Add(offerItem);
-        }
-      }
-
-      return new Offer.Offer(_clientId, availabeItems, unavailableItems);
-    }
+    }    
   }
 }
