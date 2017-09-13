@@ -11,7 +11,7 @@ namespace Bus
       //Registers listener for command
     }
 
-    public static void RegisterEventListenr<TEvent, TEventLister>()
+    public static void RegisterEventListener<TEvent, TEventLister>()
       where TEventLister : IEventListener<TEvent>
       where TEvent : IEvent
     {
