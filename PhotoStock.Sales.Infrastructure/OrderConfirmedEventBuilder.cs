@@ -34,7 +34,7 @@ namespace Photostock.Sales.Infrastructure
       _clientData = _clientRepository.Load(clientId).GenerateSnapshot();
     }
 
-    public ISystemEvent Build()
+    public Bus.IEvent Build()
     {
       return new OrderConfirmedEvent(_orderId, _clientData, _items);
     }

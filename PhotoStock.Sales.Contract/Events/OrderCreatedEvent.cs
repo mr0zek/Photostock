@@ -3,7 +3,7 @@ using Photostock.Sales.Infrastructure;
 
 namespace PhotoStock.Sales.Contract.Events
 {
-  public class OrderCreatedEvent : ISystemEvent
+  public class OrderCreatedEvent : Bus.IEvent
   {
       public AggregateId OrderId { get; private set; }
 

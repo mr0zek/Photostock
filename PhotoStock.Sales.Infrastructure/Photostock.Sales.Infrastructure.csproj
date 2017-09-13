@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bus\Bus.csproj">
+      <Project>{900CC272-63B7-41D8-BA59-5A769819A58E}</Project>
+      <Name>Bus</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
       <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>
       <Name>DDD.Base</Name>

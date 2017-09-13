@@ -48,11 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\ICommandHandler.cs" />
-    <Compile Include="Command\ICommandSender.cs" />
-    <Compile Include="Events\IEventListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query\PaginatedResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhotoStock.Sales.Domain\PhotoStock.Sales.Domain.csproj">

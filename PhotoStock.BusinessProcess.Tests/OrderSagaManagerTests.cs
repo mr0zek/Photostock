@@ -1,16 +1,15 @@
-﻿using CQRS.Base.Command;
-using DDD.Base.Domain;
+﻿using DDD.Base.Domain;
 using DDD.Infrastructure.Sagas;
 using Moq;
 using NUnit.Framework;
 using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.Sales.Contract.Events;
-using PhotoStock.Shipping.Contract.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PhotoStock.Shipping.Contract.Commands;
 
 namespace PhotoStock.BusinessProcess.Tests
 {

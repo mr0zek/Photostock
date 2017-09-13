@@ -1,5 +1,4 @@
 ﻿using Automatonymous;
-using CQRS.Base.Command;
 using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.Sales.Contract.Events;
 using PhotoStock.Shipping.Contract.Events;

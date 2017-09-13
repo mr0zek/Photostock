@@ -1,4 +1,4 @@
-using CQRS.Base.Command;
+using Bus;
 using PhotoStock.Sales.Contract.Command;
 using PhotoStock.Sales.Domain.Client;
 using PhotoStock.Sales.Domain.ProductsCatalog;

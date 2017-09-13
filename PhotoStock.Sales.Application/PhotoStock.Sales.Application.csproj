@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Handlers\AddPictureCommandHandler.cs" />
     <Compile Include="Handlers\ProductException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,9 +68,9 @@
     <Compile Include="Services\PurchaseService\PaymentService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj">
-      <Project>{7D8D2FEB-C2E5-4D54-8369-21DE2D44984A}</Project>
-      <Name>CQRS.Base</Name>
+    <ProjectReference Include="..\Bus\Bus.csproj">
+      <Project>{900cc272-63b7-41d8-ba59-5a769819a58e}</Project>
+      <Name>Bus</Name>
     </ProjectReference>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
       <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>

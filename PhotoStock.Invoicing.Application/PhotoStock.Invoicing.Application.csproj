@@ -44,9 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj">
-      <Project>{7D8D2FEB-C2E5-4D54-8369-21DE2D44984A}</Project>
-      <Name>CQRS.Base</Name>
+    <ProjectReference Include="..\Bus\Bus.csproj">
+      <Project>{900CC272-63B7-41D8-BA59-5A769819A58E}</Project>
+      <Name>Bus</Name>
     </ProjectReference>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
       <Project>{f8d43559-8792-498b-ab51-211ca04cb4df}</Project>

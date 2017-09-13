@@ -1,8 +1,9 @@
+using Bus;
 using DDD.Base.Domain;
 
 namespace PhotoStock.Sales.Contract.Command
 {
-  public class AddPictureCommand
+  public class AddPictureCommand : ICommand
   {
     public AggregateId OrderId { get; }
     public AggregateId PictureId { get; }

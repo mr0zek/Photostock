@@ -1,4 +1,4 @@
-using CQRS.Base.Events;
+using Bus;
 using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.Sales.Contract.Events;
 using PhotoStock.Shipping.Domain;

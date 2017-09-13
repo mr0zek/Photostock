@@ -1,8 +1,9 @@
+using Bus;
 using DDD.Base.Domain;
 
 namespace PhotoStock.Shipping.Contract.Commands
 {
-  public class SendShipmentCommand
+  public class SendShipmentCommand : ICommand
   {
     public AggregateId OrderId { get; set; }
 

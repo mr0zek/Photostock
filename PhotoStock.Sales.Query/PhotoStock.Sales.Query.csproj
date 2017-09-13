@@ -43,14 +43,11 @@
     <Compile Include="Offer\IOfferFinder.cs" />
     <Compile Include="Offer\OfferedProductDto.cs" />
     <Compile Include="Offer\OfferQuery.cs" />
+    <Compile Include="Offer\PaginatedResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj">
-      <Project>{7D8D2FEB-C2E5-4D54-8369-21DE2D44984A}</Project>
-      <Name>CQRS.Base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
       <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>
       <Name>DDD.Base</Name>

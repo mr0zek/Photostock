@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bus;
 
 namespace Photostock.Sales.Infrastructure
 {
@@ -15,7 +16,7 @@ namespace Photostock.Sales.Infrastructure
   {
     private ISystemEventPublisher _systemEventPublisher;
     private IPurchaseRepository _purchaseRepository;
-    private IDictionary<Type, Func<IDomainEvent, ISystemEvent>> _handlers = new Dictionary<Type, Func<IDomainEvent, ISystemEvent>>();
+    private IDictionary<Type, Func<IDomainEvent, Bus.IEvent>> _handlers = new Dictionary<Type, Func<IDomainEvent, Bus.IEvent>>();
     private IClientRepository _clientRepository;
 
     public DomainEventPublisher(ISystemEventPublisher systemEventPublisher, IClientRepository clientRepository, IPurchaseRepository purchaseRepository)
@@ -27,7 +28,7 @@ namespace Photostock.Sales.Infrastructure
       _handlers[typeof(PurchaseConfirmedEvent)] = f => PurchaseConfirmedHandler(f as PurchaseConfirmedEvent);
     }
 
-    private ISystemEvent PurchaseConfirmedHandler(PurchaseConfirmedEvent purchaseConfirmedEvent)
+    private Bus.IEvent PurchaseConfirmedHandler(PurchaseConfirmedEvent purchaseConfirmedEvent)
     {
       Purchase purchase = _purchaseRepository.Load(purchaseConfirmedEvent.PurchaseId);
       OrderConfirmedEventBuilder builder = new OrderConfirmedEventBuilder(_clientRepository);
@@ -35,14 +36,14 @@ namespace Photostock.Sales.Infrastructure
       return builder.Build();
     }
 
-    private ISystemEvent ReservationCreatedHandler(ReservationCreatedEvent f)
+    private Bus.IEvent ReservationCreatedHandler(ReservationCreatedEvent f)
     {
       return new OrderCreatedEvent(f.AggregateId);
     }
 
     public void Publish<T>(T domainEvent) where T : IDomainEvent
     {
-      ISystemEvent result = _handlers[typeof(T)](domainEvent);
+      Bus.IEvent result = _handlers[typeof(T)](domainEvent);
       _systemEventPublisher.Publish(result);
     }
   }

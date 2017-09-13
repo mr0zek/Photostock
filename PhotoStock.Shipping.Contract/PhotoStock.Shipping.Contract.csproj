@@ -40,10 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\DeliverShipmentCommand.cs" />
+    <Compile Include="Commands\SendShipmentCommand.cs" />
     <Compile Include="Events\OrderShippedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bus\Bus.csproj">
+      <Project>{900cc272-63b7-41d8-ba59-5a769819a58e}</Project>
+      <Name>Bus</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
       <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>
       <Name>DDD.Base</Name>
