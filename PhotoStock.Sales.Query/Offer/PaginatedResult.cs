@@ -5,7 +5,7 @@ namespace CQRS.Base.Query
 {
   public class PaginatedResult<T>
   {
-    public List<T> Items { get; private set; }
+    public IEnumerable<T> Items { get; private set; }
     public int PageSize { get; private set; }
     public int PageNumber { get; private set; }
     public int PagesCount { get; private set; }
@@ -20,7 +20,7 @@ namespace CQRS.Base.Query
       TotalItemsCount = 0;
     }
 
-    public PaginatedResult(List<T> items, int pageNumber, int pageSize, int totalItemsCount)
+    public PaginatedResult(IEnumerable<T> items, int pageNumber, int pageSize, int totalItemsCount)
     {
       Items = items;
       PageNumber = pageNumber;
