@@ -4,7 +4,7 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
 {
   public class DiscountFactory : IDiscountFactory
   {
-    public IDiscountPolicy Create(Client.Client client)
+    public IDiscountPolicy Create()
     {
       IDiscountPolicy result = new DiscountPolicy();
       if (DateTime.Today.Month == 12 && DateTime.Today.Day == 24) // Eve

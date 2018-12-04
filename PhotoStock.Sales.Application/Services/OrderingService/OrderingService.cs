@@ -63,7 +63,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
     {
       Reservation reservation = _reservationRepository.Load(orderId);
 
-      IDiscountPolicy discountPolicy = _discountFactory.Create(LoadClient());
+      IDiscountPolicy discountPolicy = _discountFactory.Create();
 
       return reservation.CalculateOffer(discountPolicy);
     }
@@ -72,7 +72,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
     public void Confirm(AggregateId orderId, Offer seenOffer)
     {
       Reservation reservation = _reservationRepository.Load(orderId);
-      Offer newOffer = reservation.CalculateOffer(_discountFactory.Create(LoadClient()));
+      Offer newOffer = reservation.CalculateOffer(_discountFactory.Create());
 
       if (!newOffer.SameAs(seenOffer, 5))
       {

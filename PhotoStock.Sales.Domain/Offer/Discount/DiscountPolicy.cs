@@ -6,17 +6,14 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
 {
   internal class DiscountPolicy : IDiscountPolicy
   {
-    public Discount ApplyDiscount(Product product, Money regularCost, Money totalCost)
+    public Discount GetDiscount(ProductData product, Money regularCost)
     {
-      string couse = "";
-      Money actualCost = regularCost;
-      if (totalCost >= 100)
+      if (product.Name.Contains("tree") || product.Name.Contains("grass"))
       {
-        couse += "TotalCost >= 100\n";
-        actualCost = actualCost - (5.0 / 100 * actualCost);
+        return new Discount("Tree or grass discount", 1);
       }
 
-      return new Discount(couse, actualCost);
+      return new Discount("no discount", regularCost);           
     }
   }
 }

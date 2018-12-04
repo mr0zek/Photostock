@@ -77,7 +77,7 @@ namespace PhotoStock.Sales.Domain.Reservation
         Product product = _productRepository.Load(item.ProductId);
         if (product.CanBeSold())
         {
-          Discount discount = discountPolicy.ApplyDiscount(product, product.Price, totalCost);
+          Discount discount = discountPolicy.GetDiscount(product.GenerateSnapshot(), product.Price);
           OfferItem offerItem = new OfferItem(product.GenerateSnapshot(), discount);
 
           availabeItems.Add(offerItem);
