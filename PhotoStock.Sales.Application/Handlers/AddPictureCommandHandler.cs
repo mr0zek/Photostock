@@ -11,22 +11,18 @@ namespace PhotoStock.Sales.Application.Handlers
   {
     private IReservationRepository _reservationRepository;
     private IProductRepository _productRepository;
-    private IClientRepository _clientRepository;
-    private ISystemContext _systemContext;
 
-    public AddPictureCommandHandler(IReservationRepository reservationRepository, IProductRepository productRepository, IClientRepository clientRepository, ISystemContext systemContext)
+    public AddPictureCommandHandler(IReservationRepository reservationRepository, IProductRepository productRepository)
     {
       _reservationRepository = reservationRepository;
       _productRepository = productRepository;
-      _clientRepository = clientRepository;
-      _systemContext = systemContext;
     }
 
     public void Handle(AddPictureCommand command)
     {
-      Reservation reservation = _reservationRepository.Load(command.OrderId);
+      Reservation reservation = _reservationRepository.Get(command.OrderId);
 
-      Product product = _productRepository.Load(command.PictureId);
+      Product product = _productRepository.Get(command.PictureId);
 
       if (!product.CanBeSold())
       {

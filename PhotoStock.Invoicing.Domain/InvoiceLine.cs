@@ -5,11 +5,11 @@ namespace PhotoStock.Invoicing.Domain
 {
   public class InvoiceLine : Entity
   {
-      public ProductData Product { get; private set; }
-      public int Quantity { get; private set; }
-      public Money Net { get; private set; }
-      public Money Gros { get; private set; }
-      public Tax Tax { get; private set; }
+    public ProductData Product { get; private set; }
+    public int Quantity { get; private set; }
+    public Money Net { get; private set; }
+    public Money Gros { get; private set; }
+    public Tax Tax { get; private set; }
 
     public InvoiceLine()
     {

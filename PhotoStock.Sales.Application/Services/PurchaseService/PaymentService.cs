@@ -15,7 +15,7 @@ namespace PhotoStock.Sales.Application.Services.PurchaseService
 
     public void ConfirmOrderPayment(AggregateId orderId)
     {
-      Purchase purchase = _purchaseRepository.Load(orderId);
+      Purchase purchase = _purchaseRepository.Get(orderId);
       purchase.Confirm();
       _purchaseRepository.Save(purchase);
     }

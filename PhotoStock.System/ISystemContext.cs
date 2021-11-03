@@ -1,3 +1,4 @@
+
 namespace PhotoStock.System
 {
   public interface ISystemContext

@@ -1,5 +1,7 @@
 using CQRS.Base.Events;
 using Photostock.Sales.Infrastructure;
+using PhotoStock.Invoicing.Contract;
+using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.Invoicing.Domain;
 using PhotoStock.Sales.Contract.Events;
 using PhotoStock.SharedKernel;
@@ -9,15 +11,16 @@ namespace PhotoStock.Sales.Application.Listeners
   public class BookKeepingListener : IEventListener<OrderConfirmedEvent>
   {
     private readonly IInvoiceRepository _invoiceRepository;
-    private ITaxPolicy _taxPolicy;
-    private IInvoiceFactory _invoiceFactory;
-    private ISystemEventPublisher _eventPublisher;
+    private readonly ITaxPolicy _taxPolicy;
+    private readonly IInvoiceFactory _invoiceFactory;
+    private readonly ISystemEventPublisher _eventPublisher;
 
-    public BookKeepingListener(IInvoiceRepository invoiceRepository, IInvoiceFactory invoiceFactory, ITaxPolicy taxPolicy)
+    public BookKeepingListener(IInvoiceRepository invoiceRepository, IInvoiceFactory invoiceFactory, ITaxPolicy taxPolicy, ISystemEventPublisher eventPublisher)
     {
       _invoiceRepository = invoiceRepository;
       _invoiceFactory = invoiceFactory;
       _taxPolicy = taxPolicy;
+      _eventPublisher = eventPublisher;
     }
 
     public void Handle(OrderConfirmedEvent @event)
@@ -35,7 +38,7 @@ namespace PhotoStock.Sales.Application.Listeners
 
       _invoiceRepository.Save(invoice);
 
-      _eventPublisher.Publish(new OrderInvoicedEvent(@event.OrderId));
+      _eventPublisher.Publish(new Invoicing.Contract.Events.OrderInvoicedEvent(@event.OrderId, invoice.AggregateId));
     }
   }
 }

@@ -1,3 +1,4 @@
+
 namespace PhotoStock.SharedKernel
 {
   public enum ProductType

@@ -1,4 +1,5 @@
-﻿namespace DDD.Infrastructure.Sagas
+﻿
+namespace DDD.Infrastructure.Sagas
 {
   public interface ISagaRepository<TSagaData>
   {

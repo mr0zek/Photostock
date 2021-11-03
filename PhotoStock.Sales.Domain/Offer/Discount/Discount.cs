@@ -3,7 +3,6 @@ using PhotoStock.SharedKernel;
 
 namespace PhotoStock.Sales.Domain.Offer.Discount
 {
-
   public class Discount : ValueObject
   {
     public string Cause { get; set; }

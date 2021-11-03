@@ -16,12 +16,12 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
       _percent = percent;
     }
 
-    public Discount ApplyDiscount(Product product, Money regularCost, Money totalCost)
+    public Discount ApplyDiscount(ProductData product, Money regularCost, Money totalCost)
     {
       Discount discount = _discountPolicy.ApplyDiscount(product, regularCost, totalCost);
-      if(discount != null)
-      { 
-        discount.Cause += _couse+"\n";
+      if (discount != null)
+      {
+        discount.Cause += _couse + "\n";
         Money actualPrice = regularCost - discount.Value;
         discount.Value += actualPrice - ((_percent / 100) * actualPrice);
       }

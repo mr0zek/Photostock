@@ -65,7 +65,7 @@ namespace PhotoStock.Sales.Domain.Reservation
       Money totalCost = 0;
       foreach (ReservationItem item in _items)
       {
-        Product product = _productRepository.Load(item.ProductId);
+        Product product = _productRepository.Get(item.ProductId);
         if (product.CanBeSold())
         {
           totalCost += product.Price;
@@ -74,10 +74,10 @@ namespace PhotoStock.Sales.Domain.Reservation
 
       foreach (ReservationItem item in _items)
       {
-        Product product = _productRepository.Load(item.ProductId);
+        Product product = _productRepository.Get(item.ProductId);
         if (product.CanBeSold())
         {
-          Discount discount = discountPolicy.ApplyDiscount(product, product.Price, totalCost);
+          Discount discount = discountPolicy.ApplyDiscount(product.GenerateSnapshot(), product.Price, totalCost);
           OfferItem offerItem = new OfferItem(product.GenerateSnapshot(), discount);
 
           availabeItems.Add(offerItem);

@@ -1,6 +1,5 @@
 using CQRS.Base.Events;
 using PhotoStock.Invoicing.Contract.Events;
-using PhotoStock.Sales.Contract.Events;
 using PhotoStock.Shipping.Domain;
 
 namespace PhotoStock.Shipping.Application.Listeners

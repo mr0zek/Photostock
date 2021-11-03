@@ -29,7 +29,7 @@ namespace Photostock.Sales.Infrastructure
 
     private ISystemEvent PurchaseConfirmedHandler(PurchaseConfirmedEvent purchaseConfirmedEvent)
     {
-      Purchase purchase = _purchaseRepository.Load(purchaseConfirmedEvent.PurchaseId);
+      Purchase purchase = _purchaseRepository.Get(purchaseConfirmedEvent.PurchaseId);
       OrderConfirmedEventBuilder builder = new OrderConfirmedEventBuilder(_clientRepository);
 
       //TODO:

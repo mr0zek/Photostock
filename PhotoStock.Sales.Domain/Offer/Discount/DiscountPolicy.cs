@@ -6,7 +6,7 @@ namespace PhotoStock.Sales.Domain.Offer.Discount
 {
   internal class DiscountPolicy : IDiscountPolicy
   {
-    public Discount ApplyDiscount(Product product, Money regularCost, Money totalCost)
+    public Discount ApplyDiscount(ProductData product, Money regularCost, Money totalCost)
     {
       string couse = "";
       Money actualCost = regularCost;

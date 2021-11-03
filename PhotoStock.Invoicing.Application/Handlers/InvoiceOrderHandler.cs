@@ -1,8 +1,6 @@
 using CQRS.Base.Command;
-using CQRS.Base.Events;
 using PhotoStock.Invoicing.Contract.Commands;
 using PhotoStock.Invoicing.Domain;
-using PhotoStock.Sales.Contract.Events;
 using PhotoStock.SharedKernel;
 using OrderItem = PhotoStock.Invoicing.Contract.Commands.OrderItem;
 

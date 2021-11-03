@@ -4,7 +4,7 @@ namespace PhotoStock.Shipping.Contract.Commands
 {
   public class DeliverShipmentCommand
   {
-      public AggregateId ShipmentId { get; private set; }
+    public AggregateId ShipmentId { get; private set; }
 
     public DeliverShipmentCommand(AggregateId shipmentId)
     {

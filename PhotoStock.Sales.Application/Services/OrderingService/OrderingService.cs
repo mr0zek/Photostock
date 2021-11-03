@@ -50,9 +50,9 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
 
     public void AddPicture(AggregateId orderId, AggregateId pictureId)
     {
-      Reservation reservation = _reservationRepository.Load(orderId);
+      Reservation reservation = _reservationRepository.Get(orderId);
 
-      Product product = _productRepository.Load(pictureId);
+      Product product = _productRepository.Get(pictureId);
 
       reservation.Add(product);
 
@@ -61,7 +61,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
 
     public Offer CalculateOffer(AggregateId orderId)
     {
-      Reservation reservation = _reservationRepository.Load(orderId);
+      Reservation reservation = _reservationRepository.Get(orderId);
 
       IDiscountPolicy discountPolicy = _discountFactory.Create(LoadClient());
 
@@ -71,7 +71,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
     //TODO: Transactions, dynamic proxy ?
     public void Confirm(AggregateId orderId, Offer seenOffer)
     {
-      Reservation reservation = _reservationRepository.Load(orderId);
+      Reservation reservation = _reservationRepository.Get(orderId);
       Offer newOffer = reservation.CalculateOffer(_discountFactory.Create(LoadClient()));
 
       if (!newOffer.SameAs(seenOffer, 5))
@@ -98,7 +98,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
 
     private Client LoadClient()
     {
-      return _clientRepository.Load(_systemContext.SystemUser.ClientId);
+      return _clientRepository.Get(_systemContext.SystemUser.ClientId);
     }
   }
 }

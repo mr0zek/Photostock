@@ -4,7 +4,7 @@ namespace DDD.Base.Domain
 {
   public interface IGenericRepository<T> where T : AggregateRoot
   {
-    T Load(AggregateId id);
+    T Get(AggregateId id);
 
     void Delete(AggregateId id);
 

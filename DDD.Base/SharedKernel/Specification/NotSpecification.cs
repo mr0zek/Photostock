@@ -1,3 +1,4 @@
+
 namespace DDD.Base.SharedKernel.Specification
 {
   public class NotSpecification<T> : CompositeSpecification<T>

@@ -1,3 +1,4 @@
+
 namespace PhotoStock.Sales.Domain.Offer.Discount
 {
   public interface IDiscountFactory

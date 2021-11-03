@@ -7,8 +7,8 @@ namespace PhotoStock.Sales.Domain.Purchase
 {
   public class PurchaseItem : Entity
   {
-      public ProductData ProductData { get; private set; }
-      public Money TotalCost { get; private set; }
+    public ProductData ProductData { get; private set; }
+    public Money TotalCost { get; private set; }
 
     private PurchaseItem()
     {

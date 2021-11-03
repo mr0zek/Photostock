@@ -1,94 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{42D9D95B-3F19-46E3-9CCB-B9276A465E13}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Photostock.Sales.Infrastructure</RootNamespace>
-    <AssemblyName>Photostock.Sales.Infrastructure</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.2.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\DDD.Base\DDD.Base.csproj" />
+    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj" />
+    <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj" />
+    <ProjectReference Include="..\PhotoStock.Sales.Domain\PhotoStock.Sales.Domain.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ClientRepository.cs" />
-    <Compile Include="DomainEventPublisher.cs" />
-    <Compile Include="FakeSession.cs" />
-    <Compile Include="OrderConfirmedEventBuilder.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DDD.Base\DDD.Base.csproj">
-      <Project>{F8D43559-8792-498B-AB51-211CA04CB4DF}</Project>
-      <Name>DDD.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj">
-      <Project>{1F25C4FB-D5EA-46BB-AB2B-AC5582E1AA9E}</Project>
-      <Name>DDD.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj">
-      <Project>{EA7D831A-03D1-4A08-805C-3E450EA024BC}</Project>
-      <Name>PhotoStock.Sales.Contract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhotoStock.Sales.Domain\PhotoStock.Sales.Domain.csproj">
-      <Project>{2230C68D-558A-463F-B3ED-427968DECB2E}</Project>
-      <Name>PhotoStock.Sales.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PhotoStock.SharedKernel\PhotoStock.SharedKernel.csproj">
-      <Project>{266FF480-2B3A-40C5-B01C-721C9A4D79D3}</Project>
-      <Name>PhotoStock.SharedKernel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

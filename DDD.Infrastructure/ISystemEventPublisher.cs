@@ -1,4 +1,5 @@
-﻿namespace Photostock.Sales.Infrastructure
+﻿
+namespace Photostock.Sales.Infrastructure
 {
   public interface ISystemEventPublisher
   {

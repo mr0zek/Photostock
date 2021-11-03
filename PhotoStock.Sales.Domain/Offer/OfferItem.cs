@@ -7,9 +7,9 @@ namespace PhotoStock.Sales.Domain.Offer
 {
   public class OfferItem : ValueObject
   {
-      public ProductData ProductData { get; private set; }
-      public Discount.Discount Discount { get; private set; }
-      public Money TotalCost { get; private set; }
+    public ProductData ProductData { get; private set; }
+    public Discount.Discount Discount { get; private set; }
+    public Money TotalCost { get; private set; }
 
     public OfferItem(ProductData productData) : this(productData, null)
     {

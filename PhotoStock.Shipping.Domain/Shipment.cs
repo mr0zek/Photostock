@@ -6,7 +6,7 @@ namespace PhotoStock.Shipping.Domain
 {
   public class Shipment : AggregateRoot
   {
-      public AggregateId OrderId { get; private set; }
+    public AggregateId OrderId { get; private set; }
 
     public ShippingStatus ShipmentStatus { get; private set; }
 

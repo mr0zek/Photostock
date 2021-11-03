@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using DDD.Base.Domain;
+﻿using DDD.Base.Domain;
+using System.Collections.Generic;
 
 namespace PhotoStock.Sales.Domain.ProductsCatalog
 {

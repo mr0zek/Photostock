@@ -6,7 +6,7 @@ namespace PhotoStock.Invoicing.Domain
 {
   public class Invoice : AggregateRoot
   {
-      public ClientData Client { get; private set; }
+    public ClientData Client { get; private set; }
     public Money Net { get; private set; }
     public Money Gros { get; private set; }
     public List<InvoiceLine> _items = new List<InvoiceLine>();

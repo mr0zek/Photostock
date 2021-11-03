@@ -31,7 +31,7 @@ namespace Photostock.Sales.Infrastructure
 
     public void ExportClientId(AggregateId clientId)
     {
-      _clientData = _clientRepository.Load(clientId).GenerateSnapshot();
+      _clientData = _clientRepository.Get(clientId).GenerateSnapshot();
     }
 
     public ISystemEvent Build()

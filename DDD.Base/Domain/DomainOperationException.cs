@@ -8,7 +8,7 @@ namespace DDD.Base.Domain
 
     public DomainOperationException(AggregateId aggregateId, string message) : base(message)
     {
-      AggregateId = aggregateId;      
+      AggregateId = aggregateId;
     }
   }
 }

@@ -6,8 +6,8 @@ namespace PhotoStock.Invoicing.Domain
 {
   public class Tax : ValueObject
   {
-      public Money Amount { get; private set; }
-      public string Description { get;  private set; }
+    public Money Amount { get; private set; }
+    public string Description { get; private set; }
 
     public Tax()
     {

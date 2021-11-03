@@ -1,3 +1,4 @@
+
 namespace DDD.Base.SharedKernel.Specification
 {
   public class AndSpecification<T> : CompositeSpecification<T>

@@ -5,7 +5,7 @@ namespace PhotoStock.Sales.Contract.Events
 {
   public class OrderCreatedEvent : ISystemEvent
   {
-      public AggregateId OrderId { get; private set; }
+    public AggregateId OrderId { get; private set; }
 
     public OrderCreatedEvent(AggregateId orderId)
     {

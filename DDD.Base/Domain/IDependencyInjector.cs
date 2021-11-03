@@ -1,4 +1,5 @@
-﻿namespace DDD.Base.Domain
+﻿
+namespace DDD.Base.Domain
 {
   public interface IDependencyInjector
   {

@@ -1,3 +1,4 @@
+
 namespace DDD.Infrastructure.Sagas
 {
   public interface ISerializer

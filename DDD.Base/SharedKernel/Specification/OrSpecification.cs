@@ -1,3 +1,4 @@
+
 namespace DDD.Base.SharedKernel.Specification
 {
   public class OrSpecification<T> : CompositeSpecification<T>

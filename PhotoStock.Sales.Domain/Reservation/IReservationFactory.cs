@@ -1,3 +1,4 @@
+
 namespace PhotoStock.Sales.Domain.Reservation
 {
   public interface IReservationFactory

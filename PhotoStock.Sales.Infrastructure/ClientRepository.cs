@@ -1,13 +1,27 @@
 ﻿using DDD.Base.Domain;
 using DDD.Infrastructure;
-using NHibernate;
+using PhotoStock.Sales.Domain.Client;
+using System.Collections.Generic;
 
-namespace PhotoStock.Sales.Domain.Client
+namespace Photostock.Sales.Infrastructure
 {
-  public class ClientRepository : GenericRepository<Client>, IClientRepository
+  public class InMemoryClientRepository : IClientRepository
   {
-    public ClientRepository(ISession session, IDependencyInjector dependencyInjector) : base(session, dependencyInjector)
+    Dictionary<AggregateId, Client> _clients = new Dictionary<AggregateId, Client>();
+
+    public void Delete(AggregateId id)
     {
+      _clients.Remove(id);
+    }
+
+    public Client Get(AggregateId id)
+    {
+      return _clients[id];
+    }
+
+    public void Save(Client entity)
+    {
+      _clients.Add(entity.AggregateId, entity);
     }
   }
 }

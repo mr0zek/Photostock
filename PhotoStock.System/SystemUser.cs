@@ -4,7 +4,7 @@ namespace PhotoStock.System
 {
   public class SystemUser
   {
-      public AggregateId ClientId { get; private set; }
+    public AggregateId ClientId { get; private set; }
 
     internal SystemUser(AggregateId clientId)
     {
