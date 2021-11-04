@@ -16,5 +16,9 @@ namespace PhotoStock.SharedKernel
     {
       return new Date(DateTime.Today);
     }
+
+    public static implicit operator Date(DateTime d) => new Date(d);
+
+    public static explicit operator DateTime(Date d) => d._date;
   }
 }

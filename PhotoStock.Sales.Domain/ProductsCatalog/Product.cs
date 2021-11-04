@@ -13,7 +13,7 @@ namespace PhotoStock.Sales.Domain.ProductsCatalog
 
     private ProductType _productType;
 
-    private Product(AggregateId aggregateId, Money price, String name, ProductType productType)
+    public Product(AggregateId aggregateId, Money price, String name, ProductType productType)
       : base(aggregateId)
     {
       Price = price;

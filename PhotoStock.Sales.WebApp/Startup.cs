@@ -1,19 +1,14 @@
+using System;
+using System.Linq;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace DocFlow.WebApp
+namespace PhotoStock.Sales.WebApp
 {
   public class Startup
   {
@@ -28,7 +23,7 @@ namespace DocFlow.WebApp
 
     private void CheckRegistrations(IContainer container)
     {      
-      var types = AppDomain.CurrentDomain.GetAssemblies().Where(f => f.ManifestModule.Name.Contains("DocFlow")).SelectMany(x => x.GetTypes()).ToList();
+      var types = AppDomain.CurrentDomain.GetAssemblies().Where(f => f.ManifestModule.Name.Contains("PhotoStock")).SelectMany(x => x.GetTypes()).ToList();
 
       foreach (var componentRegistration in container.ComponentRegistry.Registrations)
       {
@@ -72,6 +67,9 @@ namespace DocFlow.WebApp
              
       var builder = new ContainerBuilder();      
       builder.RegisterModule(new AutofacModule());
+      builder.RegisterModule(new System.AutofacModule());
+      builder.RegisterModule(new Application.AutofacModule());
+      builder.RegisterModule(new Infrastructure.AutofacModule());
       RegisterExternalTypes(builder);      
       builder.Populate(services);      
       var container = builder.Build();

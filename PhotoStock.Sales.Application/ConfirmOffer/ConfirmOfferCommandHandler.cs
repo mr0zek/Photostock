@@ -1,4 +1,4 @@
-﻿using CQRS.Base.Command;
+﻿using PhotoStock.Sales.Application.Services.OrderingService;
 using PhotoStock.Sales.Domain.Client;
 using PhotoStock.Sales.Domain.Offer;
 using PhotoStock.Sales.Domain.Offer.Discount;
@@ -6,7 +6,7 @@ using PhotoStock.Sales.Domain.Purchase;
 using PhotoStock.Sales.Domain.Reservation;
 using PhotoStock.System;
 
-namespace PhotoStock.Sales.Application.Services.OrderingService
+namespace PhotoStock.Sales.Application.ConfirmOffer
 {
   internal class ConfirmOfferCommandHandler : ICommandHandler<ConfirmOfferCommand>
   {
@@ -16,8 +16,16 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
     private readonly IDiscountFactory _discountFactory;
     private readonly IPurchaseFactory _purchaseFactory;
     private readonly IPurchaseRepository _purchaseRepository;
+    private readonly IOfferRepository _offerRepository;
 
-    public ConfirmOfferCommandHandler(IPurchaseRepository purchaseRepository, IPurchaseFactory purchaseFactory, IDiscountFactory discountFactory, IReservationRepository reservationRepository, ISystemContext systemContext, IClientRepository clientRepository)
+    public ConfirmOfferCommandHandler(
+      IPurchaseRepository purchaseRepository, 
+      IPurchaseFactory purchaseFactory, 
+      IDiscountFactory discountFactory, 
+      IReservationRepository reservationRepository, 
+      ISystemContext systemContext, 
+      IClientRepository clientRepository, 
+      IOfferRepository offerRepository)
     {
       _purchaseRepository = purchaseRepository;
       _purchaseFactory = purchaseFactory;
@@ -25,16 +33,18 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
       _reservationRepository = reservationRepository;
       _systemContext = systemContext;
       _clientRepository = clientRepository;
+      _offerRepository = offerRepository;
     }
 
     public void Handle(ConfirmOfferCommand command)
     {
+      Offer seenOffer = _offerRepository.Get(command.OfferId);
       Reservation reservation = _reservationRepository.Get(command.OrderId);
       Offer newOffer = reservation.CalculateOffer(_discountFactory.Create(LoadClient()));
 
-      if (!newOffer.SameAs(command.SeenOffer, 5))
+      if (!newOffer.SameAs(seenOffer, 5))
       {
-        throw new OfferChangedExcpetion(command.OrderId, command.SeenOffer, newOffer);
+        throw new OfferChangedExcpetion(command.OrderId, seenOffer, newOffer);
       }
 
       Client client = LoadClient();

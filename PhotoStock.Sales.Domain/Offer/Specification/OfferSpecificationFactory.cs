@@ -1,8 +1,6 @@
 using DDD.Base.SharedKernel.Specification;
-using PhotoStock.Sales.Domain.Offer;
-using PhotoStock.Sales.Domain.Offer.Specification;
 
-namespace PhotoStock.Sales.Application.Services
+namespace PhotoStock.Sales.Domain.Offer.Specification
 {
   internal class OfferSpecificationFactory : IOfferSpecificationFactory
   {

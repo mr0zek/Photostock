@@ -11,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj" />
     <ProjectReference Include="..\PhotoStock.BusinessProcess\PhotoStock.BusinessProcess.csproj" />
-    <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj" />
   </ItemGroup>
 
 </Project>

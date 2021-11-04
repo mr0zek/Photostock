@@ -1,12 +1,15 @@
-﻿using CQRS.Base.Command;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PhotoStock.Sales.Application.Services.OrderingService;
-using PhotoStock.Sales.Contract.Command;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using PhotoStock.Sales.Application;
+using PhotoStock.Sales.Application.AddPicture;
+using PhotoStock.Sales.Application.CalculateOffer;
+using PhotoStock.Sales.Application.ConfirmOffer;
+using PhotoStock.Sales.Application.CreateOrder;
+using PhotoStock.Sales.Domain.Offer;
+using PhotoStock.Sales.Domain.Reservation;
+using PhotoStock.Sales.Query;
+using PhotoStock.Sales.Query.Offer;
+using PhotoStock.Sales.Query.Reservation;
 
 namespace PhotoStock.Sales.WebApp.Controllers
 {
@@ -16,15 +19,35 @@ namespace PhotoStock.Sales.WebApp.Controllers
   {
     private readonly ICommandHandler<CreateOrderCommand> _createOrderHandler;
     private readonly ICommandHandler<AddPictureCommand> _addPictureCommandHandler;
+    private readonly IReservationFinder _ordersFinder;
+    private readonly ICommandHandler<CalculateOfferCommand> _calculateOffer;
+    private readonly ICommandHandler<ConfirmOfferCommand> _confirmOffer;
+    private readonly IOfferFinder _offerFinder;
+
+    public OrdersController(ICommandHandler<CreateOrderCommand> createOrderHandler, ICommandHandler<AddPictureCommand> addPictureCommandHandler, IReservationFinder ordersFinder, ICommandHandler<CalculateOfferCommand> calculateOffer, ICommandHandler<ConfirmOfferCommand> confirmOffer, IOfferFinder offerFinder)
+    {
+      _createOrderHandler = createOrderHandler;
+      _addPictureCommandHandler = addPictureCommandHandler;
+      _ordersFinder = ordersFinder;
+      _calculateOffer = calculateOffer;
+      _confirmOffer = confirmOffer;
+      _offerFinder = offerFinder;
+    }
+
+    [HttpGet()]
+    public IActionResult Get()
+    {
+      return Ok(_ordersFinder.GetAll());
+    }
 
     [HttpGet("{id}")]
     public IActionResult Get([FromRoute] string id)
     {
-      throw new Exception();
+      return Ok(_ordersFinder.Get(id));
     }
 
     [HttpPost]
-    public IActionResult Post()
+    public IActionResult CreateOrder()
     {
       Guid orderId = Guid.NewGuid();
       _createOrderHandler.Handle(new CreateOrderCommand(orderId));
@@ -40,18 +63,26 @@ namespace PhotoStock.Sales.WebApp.Controllers
       return Created($"/Orders/{orderId}/Pictures/{addPictureRequest.PictureId}", addPictureRequest.PictureId);
     }
 
-    [HttpGet("{orderId}/Offer")]
-    public IActionResult GetOffer([FromRoute] string orderId)
+    [HttpPost("{orderId}/Offers")]
+    public IActionResult CreateOffer([FromRoute] string orderId)
     {
-      OfferResponse offerResponse = new OfferResponse(); 
-
-      return Ok(offerResponse);
+      string offerId = Guid.NewGuid().ToString();
+      _calculateOffer.Handle(new CalculateOfferCommand(orderId, offerId));
+      
+      return Created($"/{orderId}/Offers/{offerId}", offerId);
     }
 
-    [HttpPost("{orderId}/Confirmation")]
-    public IActionResult PostConfirmation([FromBody] ConfirmationRequest confirmationRequest)
+    [HttpPost("{orderId}/Offers/{offerId}")]
+    public IActionResult GetOffer([FromRoute] string offerId)
     {
-      return Created("{orderId}/Confirmation","");
+      return Ok(_offerFinder.Get(offerId));
+    }
+
+    [HttpPost("{orderId}/Offers/{offerId}/Confirmation")]
+    public IActionResult PostConfirmation([FromRoute] string orderId, [FromBody] string offerId)
+    {
+      _confirmOffer.Handle(new ConfirmOfferCommand(orderId, offerId));
+      return Created($"/{orderId}/Offers/{offerId}/Confirmation", "");
     }
   }
 }

@@ -1,16 +1,21 @@
 ﻿using Autofac;
-using Autofac.Core;
-using CQRS.Base.Command;
+using PhotoStock.Sales.Domain.Offer.Discount;
+using PhotoStock.Sales.Domain.Purchase;
+using PhotoStock.Sales.Domain.Reservation;
 
-namespace DocFlow.WebApp
+namespace PhotoStock.Sales.Application
 {
-  internal class AutofacModule : Module
+  public class AutofacModule : Module
   {
     protected override void Load(ContainerBuilder builder)
     {
       builder.RegisterAssemblyTypes(typeof(ICommandHandler<>).Assembly)
         .AsClosedTypesOf(typeof(ICommandHandler<>)).AsImplementedInterfaces()
-        .InstancePerLifetimeScope();            
+        .InstancePerLifetimeScope();
+      builder.RegisterType<ReservationFactory>().AsImplementedInterfaces();
+      builder.RegisterType<DiscountFactory>().AsImplementedInterfaces();
+      builder.RegisterType<PurchaseFactory>().AsImplementedInterfaces();
+      builder.RegisterType<PurchaseFactory>().AsImplementedInterfaces();
     }
   }
 }

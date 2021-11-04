@@ -77,6 +77,11 @@ namespace PhotoStock.SharedKernel
       return new Money(value);
     }
 
+    public static implicit operator decimal(Money value)
+    {
+      return value._amount;
+    }
+
     public Money Add(Money net)
     {
       return new Money(_amount + net._amount);

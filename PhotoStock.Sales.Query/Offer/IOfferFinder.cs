@@ -1,10 +1,8 @@
-using CQRS.Base.Query;
-using System.Collections.Generic;
-
+﻿
 namespace PhotoStock.Sales.Query.Offer
 {
-  public interface IProductFinder
+  public interface IOfferFinder
   {
-    PaginatedResult<ProductDto> GetPage(OfferQuery query);
+    OfferDto Get(string offerId);
   }
 }

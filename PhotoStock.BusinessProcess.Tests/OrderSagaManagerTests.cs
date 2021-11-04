@@ -1,6 +1,4 @@
-﻿using CQRS.Base.Command;
-using DDD.Base.Domain;
-using DDD.Infrastructure.Sagas;
+﻿using DDD.Base.Domain;
 using Moq;
 using NUnit.Framework;
 using PhotoStock.Invoicing.Contract.Events;
@@ -10,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PhotoStock.BusinessProcess.Sagas;
 
 namespace PhotoStock.BusinessProcess.Tests
 {

@@ -1,5 +1,5 @@
 
-namespace CQRS.Base.Command
+namespace PhotoStock.Sales.Application
 {
   public interface ICommandHandler<TCommand>
   {

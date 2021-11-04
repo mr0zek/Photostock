@@ -1,10 +1,9 @@
-using CQRS.Base.Command;
 using PhotoStock.Invoicing.Contract.Commands;
 using PhotoStock.Invoicing.Domain;
 using PhotoStock.SharedKernel;
 using OrderItem = PhotoStock.Invoicing.Contract.Commands.OrderItem;
 
-namespace PhotoStock.Sales.Application.Listeners
+namespace PhotoStock.Invoicing.Application.Handlers
 {
   public class InvoiceOrderHandler : ICommandHandler<InvoiceOrderCommand>
   {

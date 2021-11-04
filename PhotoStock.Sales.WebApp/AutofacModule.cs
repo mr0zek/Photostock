@@ -1,8 +1,7 @@
 ﻿using Autofac;
-using Autofac.Core;
-using CQRS.Base.Command;
+using PhotoStock.Sales.Application;
 
-namespace DocFlow.WebApp
+namespace PhotoStock.Sales.WebApp
 {
   internal class AutofacModule : Module
   {

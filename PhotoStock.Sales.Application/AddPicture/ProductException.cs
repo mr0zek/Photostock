@@ -1,7 +1,7 @@
 using System;
 using DDD.Base.Domain;
 
-namespace PhotoStock.Sales.Application.Handlers
+namespace PhotoStock.Sales.Application.AddPicture
 {
   public class ProductException : Exception
   {

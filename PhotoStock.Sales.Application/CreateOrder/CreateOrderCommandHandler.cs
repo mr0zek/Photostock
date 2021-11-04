@@ -1,9 +1,8 @@
-﻿using CQRS.Base.Command;
-using PhotoStock.Sales.Domain.Client;
+﻿using PhotoStock.Sales.Domain.Client;
 using PhotoStock.Sales.Domain.Reservation;
 using PhotoStock.System;
 
-namespace PhotoStock.Sales.Application.Services.OrderingService
+namespace PhotoStock.Sales.Application.CreateOrder
 {
   internal class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand>
   {

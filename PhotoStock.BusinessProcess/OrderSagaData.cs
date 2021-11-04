@@ -1,6 +1,6 @@
 ﻿using Automatonymous;
 using DDD.Base.Domain;
-using DDD.Infrastructure.Sagas;
+using PhotoStock.BusinessProcess.Sagas;
 
 namespace PhotoStock.BusinessProcess
 {

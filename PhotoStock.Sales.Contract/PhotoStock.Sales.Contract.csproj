@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Command\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj" />
-    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj" />
     <ProjectReference Include="..\PhotoStock.SharedKernel\PhotoStock.SharedKernel.csproj" />
   </ItemGroup>
 

@@ -1,9 +1,8 @@
 using DDD.Base.Domain;
-using Photostock.Sales.Infrastructure;
 
 namespace PhotoStock.Invoicing.Contract.Events
 {
-  public class OrderInvoicedEvent : ISystemEvent
+  public class OrderInvoicedEvent 
   {
     public AggregateId OrderId { get; }
     public AggregateId InvoiceNumber { get; }

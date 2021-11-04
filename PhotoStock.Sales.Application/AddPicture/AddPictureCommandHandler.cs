@@ -1,11 +1,7 @@
-using CQRS.Base.Command;
-using PhotoStock.Sales.Contract.Command;
-using PhotoStock.Sales.Domain.Client;
 using PhotoStock.Sales.Domain.ProductsCatalog;
 using PhotoStock.Sales.Domain.Reservation;
-using PhotoStock.System;
 
-namespace PhotoStock.Sales.Application.Handlers
+namespace PhotoStock.Sales.Application.AddPicture
 {
   internal class AddPictureCommandHandler : ICommandHandler<AddPictureCommand>
   {

@@ -1,4 +1,3 @@
-using CQRS.Base.Command;
 using PhotoStock.Shipping.Contract.Commands;
 using PhotoStock.Shipping.Domain;
 

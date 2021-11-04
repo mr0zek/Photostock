@@ -1,7 +1,6 @@
 using DDD.Base.SharedKernel.Specification;
-using PhotoStock.Sales.Domain.Offer;
 
-namespace PhotoStock.Sales.Application.Services
+namespace PhotoStock.Sales.Domain.Offer.Specification
 {
   public interface IOfferSpecificationFactory
   {

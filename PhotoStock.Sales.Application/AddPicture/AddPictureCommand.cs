@@ -1,6 +1,6 @@
 using DDD.Base.Domain;
 
-namespace PhotoStock.Sales.Contract.Command
+namespace PhotoStock.Sales.Application.AddPicture
 {
   public class AddPictureCommand
   {

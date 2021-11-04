@@ -2,13 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>PhotoStock.Sales.Infrastructure</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj" />
-    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj" />
-    <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj" />
     <ProjectReference Include="..\PhotoStock.Sales.Domain\PhotoStock.Sales.Domain.csproj" />
+    <ProjectReference Include="..\PhotoStock.Sales.Query\PhotoStock.Sales.Query.csproj" />
   </ItemGroup>
 
 </Project>

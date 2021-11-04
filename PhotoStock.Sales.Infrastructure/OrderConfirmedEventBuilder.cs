@@ -1,11 +1,11 @@
+using System.Collections.Generic;
 using DDD.Base.Domain;
-using PhotoStock.Sales.Contract.Events;
 using PhotoStock.Sales.Domain.Client;
 using PhotoStock.Sales.Domain.Purchase;
+using PhotoStock.Sales.Query.Events;
 using PhotoStock.SharedKernel;
-using System.Collections.Generic;
 
-namespace Photostock.Sales.Infrastructure
+namespace PhotoStock.Sales.Infrastructure
 {
   internal class OrderConfirmedEventBuilder : IPurchaseExporter
   {
@@ -34,7 +34,7 @@ namespace Photostock.Sales.Infrastructure
       _clientData = _clientRepository.Get(clientId).GenerateSnapshot();
     }
 
-    public ISystemEvent Build()
+    public object Build()
     {
       return new OrderConfirmedEvent(_orderId, _clientData, _items);
     }

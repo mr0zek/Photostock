@@ -9,13 +9,6 @@ namespace PhotoStock.Sales.Domain.Purchase
 {
   public class PurchaseFactory : IPurchaseFactory
   {
-    private IDependencyInjector _dependencyInjector;
-
-    public PurchaseFactory(IDependencyInjector dependencyInjector)
-    {
-      _dependencyInjector = dependencyInjector;
-    }
-
     public Purchase Create(AggregateId orderId, Client.Client client, Offer.Offer offer)
     {
       if (!CanPurchse(client, offer.AvailableItems))
@@ -33,8 +26,6 @@ namespace PhotoStock.Sales.Domain.Purchase
 
       Purchase purchase = new Purchase(orderId, client.AggregateId,
         items, Date.Today(), false, purchaseTotlCost);
-
-      _dependencyInjector.InjectDependencies(purchase);
 
       return purchase;
     }

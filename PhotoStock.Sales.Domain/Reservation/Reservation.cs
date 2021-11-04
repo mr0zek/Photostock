@@ -5,6 +5,7 @@ using PhotoStock.Sales.Domain.Offer.Discount;
 using PhotoStock.Sales.Domain.ProductsCatalog;
 using PhotoStock.SharedKernel;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PhotoStock.Sales.Domain.Reservation
 {
@@ -55,6 +56,11 @@ namespace PhotoStock.Sales.Domain.Reservation
         DomainError("Reservation is already closed");
       }
       _status = ReservationStatus.CLOSED;
+    }
+
+    public ReservationData GetSnapshot()
+    {
+      return new ReservationData(_status, _clientId, _createDate, _items.Select(f => f.ProductId));
     }
 
     public Offer.Offer CalculateOffer(IDiscountPolicy discountPolicy)

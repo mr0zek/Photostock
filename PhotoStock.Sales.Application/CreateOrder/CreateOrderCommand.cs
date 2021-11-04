@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PhotoStock.Sales.Application.Services.OrderingService
+namespace PhotoStock.Sales.Application.CreateOrder
 {
   public class CreateOrderCommand
   {

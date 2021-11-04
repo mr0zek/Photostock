@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj" />
     <ProjectReference Include="..\PhotoStock.Invoicing.Contract\PhotoStock.Invoicing.Contract.csproj" />
     <ProjectReference Include="..\PhotoStock.Invoicing.Domain\PhotoStock.Invoicing.Domain.csproj" />
     <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj" />

@@ -1,33 +1,30 @@
-﻿using DDD.Base.Domain;
-using PhotoStock.Sales.Contract.Events;
+﻿using System;
+using System.Collections.Generic;
+using DDD.Base.Domain;
 using PhotoStock.Sales.Domain.Client;
 using PhotoStock.Sales.Domain.Purchase;
 using PhotoStock.Sales.Domain.Reservation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PhotoStock.Sales.Query.Events;
 
-namespace Photostock.Sales.Infrastructure
+namespace PhotoStock.Sales.Infrastructure
 {
   public class DomainEventPublisher : IDomainEventPublisher
   {
-    private ISystemEventPublisher _systemEventPublisher;
     private IPurchaseRepository _purchaseRepository;
-    private IDictionary<Type, Func<IDomainEvent, ISystemEvent>> _handlers = new Dictionary<Type, Func<IDomainEvent, ISystemEvent>>();
+    private IDictionary<Type, Func<IDomainEvent, object>> _handlers = new Dictionary<Type, Func<IDomainEvent, object>>();
     private IClientRepository _clientRepository;
+    private IEventsRepository _eventsRepository;
 
-    public DomainEventPublisher(ISystemEventPublisher systemEventPublisher, IClientRepository clientRepository, IPurchaseRepository purchaseRepository)
+    public DomainEventPublisher(IClientRepository clientRepository, IPurchaseRepository purchaseRepository, IEventsRepository eventsRepository)
     {
-      _systemEventPublisher = systemEventPublisher;
       _clientRepository = clientRepository;
       _purchaseRepository = purchaseRepository;
+      _eventsRepository = eventsRepository;
       _handlers[typeof(ReservationCreatedEvent)] = f => ReservationCreatedHandler(f as ReservationCreatedEvent);
       _handlers[typeof(PurchaseConfirmedEvent)] = f => PurchaseConfirmedHandler(f as PurchaseConfirmedEvent);
     }
 
-    private ISystemEvent PurchaseConfirmedHandler(PurchaseConfirmedEvent purchaseConfirmedEvent)
+    private object PurchaseConfirmedHandler(PurchaseConfirmedEvent purchaseConfirmedEvent)
     {
       Purchase purchase = _purchaseRepository.Get(purchaseConfirmedEvent.PurchaseId);
       OrderConfirmedEventBuilder builder = new OrderConfirmedEventBuilder(_clientRepository);
@@ -35,15 +32,16 @@ namespace Photostock.Sales.Infrastructure
       return builder.Build();
     }
 
-    private ISystemEvent ReservationCreatedHandler(ReservationCreatedEvent f)
+    private object ReservationCreatedHandler(ReservationCreatedEvent f)
     {
       return new OrderCreatedEvent(f.AggregateId);
     }
 
     public void Publish<T>(T domainEvent) where T : IDomainEvent
     {
-      ISystemEvent result = _handlers[typeof(T)](domainEvent);
-      _systemEventPublisher.Publish(result);
+      object result = _handlers[typeof(T)](domainEvent);
+
+      _eventsRepository.Add(result);
     }
   }
 }

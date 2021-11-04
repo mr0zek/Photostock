@@ -10,8 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj" />
     <ProjectReference Include="..\PhotoStock.Sales.Application\PhotoStock.Sales.Application.csproj" />
+    <ProjectReference Include="..\Photostock.Sales.Infrastructure\PhotoStock.Sales.Infrastructure.csproj" />
+    <ProjectReference Include="..\PhotoStock.Sales.Query\PhotoStock.Sales.Query.csproj" />
+    <ProjectReference Include="..\PhotoStock.System\PhotoStock.System.csproj" />
   </ItemGroup>
 
 

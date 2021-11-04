@@ -1,12 +1,8 @@
-using CQRS.Base.Events;
-using Photostock.Sales.Infrastructure;
-using PhotoStock.Invoicing.Contract;
-using PhotoStock.Invoicing.Contract.Events;
 using PhotoStock.Invoicing.Domain;
 using PhotoStock.Sales.Contract.Events;
 using PhotoStock.SharedKernel;
 
-namespace PhotoStock.Sales.Application.Listeners
+namespace PhotoStock.Invoicing.Application.Listeners
 {
   public class BookKeepingListener : IEventListener<OrderConfirmedEvent>
   {
