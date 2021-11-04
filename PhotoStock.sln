@@ -49,6 +49,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoStock.Sales.WebApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoStock.Sales.Contract", "PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj", "{DA5C74D4-7156-4CB7-89FD-9FDC8AEE63B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoStock.Sales.Tests", "PhotoStock.Sales.Tests\PhotoStock.Sales.Tests.csproj", "{1308EA73-8575-45E9-BE1D-04694F19B5D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,10 @@ Global
 		{DA5C74D4-7156-4CB7-89FD-9FDC8AEE63B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA5C74D4-7156-4CB7-89FD-9FDC8AEE63B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA5C74D4-7156-4CB7-89FD-9FDC8AEE63B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1308EA73-8575-45E9-BE1D-04694F19B5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1308EA73-8575-45E9-BE1D-04694F19B5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1308EA73-8575-45E9-BE1D-04694F19B5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1308EA73-8575-45E9-BE1D-04694F19B5D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +153,7 @@ Global
 		{D59DD003-ECF3-40D4-AF4E-B8C3B55C8D3D} = {EA8DA886-D082-4565-95FA-7E70248260B7}
 		{5D82A605-4BEC-4641-841E-09AAAD672285} = {C8607D23-999C-46EE-946A-85C6CF69746F}
 		{DA5C74D4-7156-4CB7-89FD-9FDC8AEE63B2} = {C8607D23-999C-46EE-946A-85C6CF69746F}
+		{1308EA73-8575-45E9-BE1D-04694F19B5D9} = {C8607D23-999C-46EE-946A-85C6CF69746F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {322FDC4E-B8DB-4DC4-9B0F-CF0F3D72998F}

@@ -52,37 +52,37 @@ namespace PhotoStock.Sales.WebApp.Controllers
       Guid orderId = Guid.NewGuid();
       _createOrderHandler.Handle(new CreateOrderCommand(orderId));
       
-      return Created($"/Orders/{orderId}", orderId);
+      return Created($"/orders/{orderId}", orderId);
     }
 
-    [HttpPost("{orderId}/Pictures")]
+    [HttpPost("{orderId}/pictures")]
     public IActionResult PostPicture([FromRoute] string orderId, [FromBody] AddPictureRequest addPictureRequest)
     {
       _addPictureCommandHandler.Handle(new AddPictureCommand(orderId, addPictureRequest.PictureId, addPictureRequest.Quantity));
       
-      return Created($"/Orders/{orderId}/Pictures/{addPictureRequest.PictureId}", addPictureRequest.PictureId);
+      return Created($"/orders/{orderId}/pictures/{addPictureRequest.PictureId}", addPictureRequest.PictureId);
     }
 
-    [HttpPost("{orderId}/Offers")]
+    [HttpPost("{orderId}/offers")]
     public IActionResult CreateOffer([FromRoute] string orderId)
     {
       string offerId = Guid.NewGuid().ToString();
       _calculateOffer.Handle(new CalculateOfferCommand(orderId, offerId));
       
-      return Created($"/{orderId}/Offers/{offerId}", offerId);
+      return Created($"/{orderId}/offers/{offerId}", offerId);
     }
 
-    [HttpPost("{orderId}/Offers/{offerId}")]
+    [HttpGet("{orderId}/offers/{offerId}")]
     public IActionResult GetOffer([FromRoute] string offerId)
     {
       return Ok(_offerFinder.Get(offerId));
     }
 
-    [HttpPost("{orderId}/Offers/{offerId}/Confirmation")]
+    [HttpPost("{orderId}/offers/{offerId}/confirmation")]
     public IActionResult PostConfirmation([FromRoute] string orderId, [FromBody] string offerId)
     {
       _confirmOffer.Handle(new ConfirmOfferCommand(orderId, offerId));
-      return Created($"/{orderId}/Offers/{offerId}/Confirmation", "");
+      return Created($"/{orderId}/offers/{offerId}/confirmation", "");
     }
   }
 }
