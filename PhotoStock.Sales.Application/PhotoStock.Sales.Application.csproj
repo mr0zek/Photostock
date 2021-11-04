@@ -11,10 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj" />
     <ProjectReference Include="..\DDD.Base\DDD.Base.csproj" />
     <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj" />
-    <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj" />
     <ProjectReference Include="..\PhotoStock.Sales.Domain\PhotoStock.Sales.Domain.csproj" />
     <ProjectReference Include="..\PhotoStock.SharedKernel\PhotoStock.SharedKernel.csproj" />
     <ProjectReference Include="..\PhotoStock.System\PhotoStock.System.csproj" />

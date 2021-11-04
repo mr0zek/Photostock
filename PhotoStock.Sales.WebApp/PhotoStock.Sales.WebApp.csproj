@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CQRS.Base\CQRS.Base.csproj" />
+    <ProjectReference Include="..\PhotoStock.Sales.Application\PhotoStock.Sales.Application.csproj" />
   </ItemGroup>
 
 

@@ -10,6 +10,7 @@ using PhotoStock.System;
 
 namespace PhotoStock.Sales.Application.Services.OrderingService
 {
+
   public class OrderingService : IOrderingService
   {
     private ISystemContext _systemContext;

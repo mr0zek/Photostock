@@ -7,7 +7,7 @@ using PhotoStock.System;
 
 namespace PhotoStock.Sales.Application.Handlers
 {
-  public class AddPictureCommandHandler : ICommandHandler<AddPictureCommand>
+  internal class AddPictureCommandHandler : ICommandHandler<AddPictureCommand>
   {
     private IReservationRepository _reservationRepository;
     private IProductRepository _productRepository;
