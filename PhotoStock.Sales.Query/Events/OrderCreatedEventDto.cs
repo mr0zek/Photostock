@@ -2,11 +2,11 @@ using DDD.Base.Domain;
 
 namespace PhotoStock.Sales.Query.Events
 {
-  public class OrderCreatedEvent 
+  public class OrderCreatedEventDto : EventDto
   {
     public AggregateId OrderId { get; private set; }
 
-    public OrderCreatedEvent(AggregateId orderId)
+    public OrderCreatedEventDto(AggregateId orderId, int version) :base(version)
     {
       OrderId = orderId;
     }

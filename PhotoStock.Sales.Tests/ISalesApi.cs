@@ -5,19 +5,19 @@ namespace PhotoStock.Sales.Tests
 {
   public interface ISalesApi
   {
-    [Post("orders")]
+    [Post("api/orders")]
     Task<string> CreateOrder();
 
-    [Post("orders/{orderId}/pictures")]
-    Task AddPicture([Path] string orderId, [Path] string pictureId);
+    [Post("api/orders/{orderId}/pictures")]
+    Task AddPicture([Path] string orderId, [Body] object pictureData);
 
-    [Post("orders/{orderId}/offers")]
+    [Post("api//{orderId}/offers")]
     Task<string> CreateOffer([Path] string orderId);
 
-    [Get("orders/{orderId}/offers/{offerId}")]
-    Task GetOffer([Path] string offerId);
+    [Get("api/orders/{orderId}/offers/{offerId}")]
+    Task GetOffer([Path] string orderId, [Path] string offerId);
 
-    [Post("orders/{orderId}/offers/{offerId}/confirmation")]
-    Task ConfirmOffer([Path]string offerId);
+    [Post("api/orders/{orderId}/offers/{offerId}/confirmation")]
+    Task ConfirmOffer([Path] string orderId, [Path]string offerId);
   }
 }

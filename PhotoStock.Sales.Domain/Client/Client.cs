@@ -12,11 +12,12 @@ namespace PhotoStock.Sales.Domain.Client
     private Money _cash;
     private readonly Money _maxCreditLimit;
 
-    public Client(string name, bool isVip)
+    public Client(AggregateId clientId, string name, bool isVip,Money cash, Money maxCreditLimit) : base(clientId)
     {
       _isVip = isVip;
-      _maxCreditLimit = 100;
+      _creditLimit = _maxCreditLimit = maxCreditLimit;
       _name = name;
+      _cash = cash;
     }
 
     public ClientData GenerateSnapshot()
@@ -28,11 +29,10 @@ namespace PhotoStock.Sales.Domain.Client
     {
       if (_isVip)
       {
-        if (_creditLimit < _maxCreditLimit)
+        if (_creditLimit > amount)
         {
           return true;
         }
-        return false;
       }
 
       if (_cash < amount)

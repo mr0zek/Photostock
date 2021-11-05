@@ -11,7 +11,8 @@ namespace PhotoStock.Sales.Infrastructure
       builder.RegisterType<InMemoryReservationRepository>().AsImplementedInterfaces();
       builder.RegisterType<InMemoryProductRepository>().AsImplementedInterfaces();
       builder.RegisterType<InMemoryPurchaseRepository>().AsImplementedInterfaces();
-      builder.RegisterType<InMemoryEventsRepository>().AsImplementedInterfaces();
+      builder.RegisterType<InMemoryEventRepository>().AsImplementedInterfaces();
+      builder.RegisterType<DomainEventPublisher>().AsImplementedInterfaces();
       builder.RegisterType<OrderConfirmedEventBuilder>().AsImplementedInterfaces();
     }
   }

@@ -21,7 +21,7 @@ namespace PhotoStock.Sales.Application.CreateOrder
 
     public void Handle(CreateOrderCommand command)
     {
-      Reservation reservation = _reservationFactory.Create(LoadClient());
+      Reservation reservation = _reservationFactory.Create(command.OrderId, LoadClient());
       _reservationRepository.Save(reservation);      
     }
 

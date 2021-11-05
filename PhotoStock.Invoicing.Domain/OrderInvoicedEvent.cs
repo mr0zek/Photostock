@@ -6,6 +6,7 @@ namespace PhotoStock.Invoicing.Domain
   {
     public AggregateId OrderId { get; }
     public AggregateId InvoiceNumber { get; }
+    public int Version { get; set; }
 
     public OrderInvoicedEvent(AggregateId orderId, AggregateId invoiceNumber)
     {

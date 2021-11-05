@@ -29,12 +29,12 @@ namespace PhotoStock.Sales.Domain.Purchase
     public void Confirm()
     {
       IsPaid = true;
-      EventPublisher.Publish(new PurchaseConfirmedEvent(AggregateId));
+      EventPublisher.Publish(new PurchaseConfirmedEvent(AggregateId, Version));
     }
 
     public void Export(IPurchaseExporter builder)
     {
-      builder.ExportId(AggregateId);
+      builder.ExportIdAndVersion(AggregateId, Version);
       builder.ExportClientId(ClientId);
       foreach (PurchaseItem purchaseItem in _items)
       {

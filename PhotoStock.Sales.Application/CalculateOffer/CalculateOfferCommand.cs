@@ -9,9 +9,10 @@ namespace PhotoStock.Sales.Application.CalculateOffer
     public CalculateOfferCommand(string orderId, string offerId)
     {
       OrderId = orderId;
+      OfferId = offerId;
     }
 
     public AggregateId OrderId { get; internal set; }
-    public Offer OfferId { get; set; }
+    public string OfferId { get; set; }
   }
 }

@@ -7,7 +7,7 @@ namespace PhotoStock.Sales.Infrastructure
 {
   class InMemoryOfferRepository : IOfferFinder, IOfferRepository
   {
-    private Dictionary<string, Offer> _items = new Dictionary<string, Offer>();
+    private static Dictionary<string, Offer> _items = new Dictionary<string, Offer>();
 
     public OfferDto Get(string offerId)
     {
@@ -18,9 +18,9 @@ namespace PhotoStock.Sales.Infrastructure
         offer.TotalCost);
     }
 
-    public void Save(Offer commandOfferId, Offer offer)
+    public void Save(string offerId, Offer offer)
     {
-      
+      _items[offerId] = offer;
     }
 
     Offer IOfferRepository.Get(string offerId)

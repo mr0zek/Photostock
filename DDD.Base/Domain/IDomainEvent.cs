@@ -5,5 +5,6 @@ namespace DDD.Base.Domain
   //[Domain@event]
   public interface IDomainEvent
   {
+    public int Version { get; set; }
   }
 }

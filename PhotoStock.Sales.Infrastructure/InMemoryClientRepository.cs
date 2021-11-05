@@ -10,7 +10,7 @@ namespace PhotoStock.Sales.Infrastructure
 
     static InMemoryClientRepository()
     {
-      _clients.Add("1", new Client("Bugs Bunny", true));
+      _clients.Add("1", new Client("1", "Bugs Bunny", true, 100, 1000));
     }
 
     public void Delete(AggregateId id)
@@ -25,7 +25,7 @@ namespace PhotoStock.Sales.Infrastructure
 
     public void Save(Client entity)
     {
-      _clients.Add(entity.AggregateId, entity);
+      _clients[entity.AggregateId] = entity;
     }
   }
 }

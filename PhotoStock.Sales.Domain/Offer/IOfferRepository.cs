@@ -3,6 +3,6 @@
   public interface IOfferRepository
   {
     Offer Get(string offerId);
-    void Save(Offer commandOfferId, Offer offer);
+    void Save(string offerId, Offer offer);
   }
 }

@@ -2,7 +2,7 @@ using DDD.Base.Domain;
 
 namespace PhotoStock.SharedKernel
 {
-  public class ProductData
+  public class ProductData : ValueObject
   {
     public ProductData(AggregateId productId, Money price, string name, ProductType productType)
     {

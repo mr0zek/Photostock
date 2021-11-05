@@ -1,8 +1,10 @@
 
+using DDD.Base.Domain;
+
 namespace PhotoStock.Sales.Domain.Reservation
 {
   public interface IReservationFactory
   {
-    Reservation Create(Client.Client client);
+    Reservation Create(AggregateId reservationId, Client.Client client);
   }
 }

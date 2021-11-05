@@ -31,7 +31,7 @@ namespace PhotoStock.Shipping.Domain
         throw new IllegalStateException("Cannot ship in status " + ShipmentStatus);
       }
       ShipmentStatus = ShippingStatus.SENT;
-      EventPublisher.Publish(new OrderShippedEvent(OrderId, AggregateId));
+      EventPublisher.Publish(new OrderShippedEvent(OrderId, AggregateId, Version));
     }
   }
 }

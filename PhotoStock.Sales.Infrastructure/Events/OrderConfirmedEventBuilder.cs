@@ -5,14 +5,15 @@ using PhotoStock.Sales.Domain.Purchase;
 using PhotoStock.Sales.Query.Events;
 using PhotoStock.SharedKernel;
 
-namespace PhotoStock.Sales.Infrastructure
+namespace PhotoStock.Sales.Infrastructure.Events
 {
   internal class OrderConfirmedEventBuilder : IPurchaseExporter
   {
     private AggregateId _orderId;
     private ClientData _clientData;
     private IClientRepository _clientRepository;
-    private List<OrderItem> _items = new List<OrderItem>();
+    private List<OrderItemDto> _items = new List<OrderItemDto>();
+    private int _version;
 
     public OrderConfirmedEventBuilder(IClientRepository clientRepository)
     {
@@ -21,12 +22,13 @@ namespace PhotoStock.Sales.Infrastructure
 
     public void ExportItem(ProductData productData, Money totalCost)
     {
-      _items.Add(new OrderItem() { ProductData = productData, TotalCost = totalCost });
+      _items.Add(new OrderItemDto() { ProductData = productData, TotalCost = totalCost });
     }
 
-    public void ExportId(AggregateId purchaseId)
+    public void ExportIdAndVersion(AggregateId purchaseId, int version)
     {
       _orderId = purchaseId;
+      _version = version;
     }
 
     public void ExportClientId(AggregateId clientId)
@@ -34,9 +36,9 @@ namespace PhotoStock.Sales.Infrastructure
       _clientData = _clientRepository.Get(clientId).GenerateSnapshot();
     }
 
-    public object Build()
+    public EventDto Build()
     {
-      return new OrderConfirmedEvent(_orderId, _clientData, _items);
+      return new OrderConfirmedEventDto(_orderId, _clientData, _items, _version);
     }
   }
 }

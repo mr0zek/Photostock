@@ -14,7 +14,7 @@ using PhotoStock.Sales.Query.Reservation;
 namespace PhotoStock.Sales.WebApp.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
+  [Route("api/[controller]")]
   public class OrdersController : ControllerBase
   {
     private readonly ICommandHandler<CreateOrderCommand> _createOrderHandler;
@@ -49,7 +49,7 @@ namespace PhotoStock.Sales.WebApp.Controllers
     [HttpPost]
     public IActionResult CreateOrder()
     {
-      Guid orderId = Guid.NewGuid();
+      string orderId = Guid.NewGuid().ToString();
       _createOrderHandler.Handle(new CreateOrderCommand(orderId));
       
       return Created($"/orders/{orderId}", orderId);
@@ -79,7 +79,7 @@ namespace PhotoStock.Sales.WebApp.Controllers
     }
 
     [HttpPost("{orderId}/offers/{offerId}/confirmation")]
-    public IActionResult PostConfirmation([FromRoute] string orderId, [FromBody] string offerId)
+    public IActionResult PostConfirmation([FromRoute] string orderId, [FromRoute] string offerId)
     {
       _confirmOffer.Handle(new ConfirmOfferCommand(orderId, offerId));
       return Created($"/{orderId}/offers/{offerId}/confirmation", "");

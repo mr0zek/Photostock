@@ -6,7 +6,7 @@ namespace PhotoStock.Sales.Domain.Purchase
 {
   public interface IPurchaseExporter
   {
-    void ExportId(AggregateId purchaseId);
+    void ExportIdAndVersion(AggregateId purchaseId, int version);
 
     void ExportItem(ProductData productData, Money totalCost);
 

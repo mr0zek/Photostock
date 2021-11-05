@@ -7,6 +7,7 @@ using PhotoStock.Sales.Domain.ProductsCatalog;
 using PhotoStock.Sales.Domain.Purchase;
 using PhotoStock.Sales.Domain.Reservation;
 using PhotoStock.System;
+using System;
 
 namespace PhotoStock.Sales.Application.Services.OrderingService
 {
@@ -44,7 +45,7 @@ namespace PhotoStock.Sales.Application.Services.OrderingService
 
     public AggregateId CreateOrder()
     {
-      Reservation reservation = _reservationFactory.Create(LoadClient());
+      Reservation reservation = _reservationFactory.Create(Guid.NewGuid().ToString(), LoadClient());
       _reservationRepository.Save(reservation);
       return reservation.AggregateId;
     }
