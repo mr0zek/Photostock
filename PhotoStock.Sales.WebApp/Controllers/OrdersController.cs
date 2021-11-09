@@ -47,9 +47,13 @@ namespace PhotoStock.Sales.WebApp.Controllers
     }
 
     [HttpPost]
-    public IActionResult CreateOrder()
+    public IActionResult CreateOrder([FromBody]CreateOrderRequest createOrderRequest)
     {
       string orderId = Guid.NewGuid().ToString();
+      if (createOrderRequest != null && createOrderRequest.OrderId != null)
+      {
+        orderId = createOrderRequest.OrderId;
+      }
       _createOrderHandler.Handle(new CreateOrderCommand(orderId));
       
       return Created($"/orders/{orderId}", orderId);
@@ -64,9 +68,14 @@ namespace PhotoStock.Sales.WebApp.Controllers
     }
 
     [HttpPost("{orderId}/offers")]
-    public IActionResult CreateOffer([FromRoute] string orderId)
+    public IActionResult CreateOffer([FromRoute] string orderId,[FromBody]CreateOfferRequest createOfferRequest)
     {
       string offerId = Guid.NewGuid().ToString();
+      if (createOfferRequest != null && createOfferRequest.OfferId != null)
+      {
+        offerId = createOfferRequest.OfferId;
+      }
+
       _calculateOffer.Handle(new CalculateOfferCommand(orderId, offerId));
       
       return Created($"/{orderId}/offers/{offerId}", offerId);
@@ -84,5 +93,15 @@ namespace PhotoStock.Sales.WebApp.Controllers
       _confirmOffer.Handle(new ConfirmOfferCommand(orderId, offerId));
       return Created($"/{orderId}/offers/{offerId}/confirmation", "");
     }
+  }
+
+  public class CreateOfferRequest
+  {
+    public string OfferId { get; set; }
+  }
+
+  public class CreateOrderRequest
+  {
+    public string OrderId { get; set; }
   }
 }

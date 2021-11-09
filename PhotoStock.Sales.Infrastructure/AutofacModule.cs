@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using PhotoStock.Sales.Infrastructure.Events;
 
 namespace PhotoStock.Sales.Infrastructure
 {
@@ -11,9 +12,9 @@ namespace PhotoStock.Sales.Infrastructure
       builder.RegisterType<InMemoryReservationRepository>().AsImplementedInterfaces();
       builder.RegisterType<InMemoryProductRepository>().AsImplementedInterfaces();
       builder.RegisterType<InMemoryPurchaseRepository>().AsImplementedInterfaces();
+      builder.RegisterType<OrderConfirmedEventBuilder>().AsImplementedInterfaces();
       builder.RegisterType<InMemoryEventRepository>().AsImplementedInterfaces();
       builder.RegisterType<DomainEventPublisher>().AsImplementedInterfaces();
-      builder.RegisterType<OrderConfirmedEventBuilder>().AsImplementedInterfaces();
     }
   }
 }

@@ -25,7 +25,7 @@ namespace PhotoStock.Sales.Tests
       ISalesApi proxy = RestEase.RestClient.For<ISalesApi>("http://localhost:12121");
       IEventsApi eventsProxy = RestClient.For<IEventsApi>("http://localhost:12121");
 
-      string orderId = await proxy.CreateOrder();
+      string orderId = await proxy.CreateOrder(new CreateOrderCommand(Guid.NewGuid().ToString()));
 
       IEnumerable<Event> events = await eventsProxy.GetEvents(0,100);
 
@@ -33,7 +33,7 @@ namespace PhotoStock.Sales.Tests
 
       await proxy.AddPicture(orderId, new { PictureId="1", Quantity = 1 });
 
-      string offerId = await proxy.CreateOffer(orderId);
+      string offerId = await proxy.CreateOffer(orderId, new CreateOfferCommand(Guid.NewGuid().ToString()));
 
       await proxy.GetOffer(orderId,offerId);
 
@@ -43,6 +43,10 @@ namespace PhotoStock.Sales.Tests
       events = await eventsProxy.GetEvents(3,100);
 
       Assert.IsTrue(events.Count() == 1);
+      
+      events = await eventsProxy.GetEvents(1,100);
+
+      Assert.IsTrue(events.First().Type == "OrderConfirmedEvent");
 
     }
   }

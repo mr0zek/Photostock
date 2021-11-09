@@ -4,7 +4,8 @@ namespace PhotoStock.Sales.Domain.Purchase
 {
   public class PurchaseConfirmedEvent : IDomainEvent
   {
-    public AggregateId PurchaseId { get; set; }
+    public AggregateId PurchaseId { get; }
+
     public int Version { get; set; }
 
     public PurchaseConfirmedEvent(AggregateId purchaseId, int version)

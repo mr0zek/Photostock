@@ -1,4 +1,4 @@
-﻿namespace VG.MasterpieceCatalog.Contract
+﻿namespace PhotoStock.Sales.Contract.Events
 {
   public class Event
   {

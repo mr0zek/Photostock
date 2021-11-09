@@ -9,6 +9,13 @@ namespace PhotoStock.Sales.Domain.Purchase
 {
   public class PurchaseFactory : IPurchaseFactory
   {
+    private IDomainEventPublisher _domainEventsPublisher;
+
+    public PurchaseFactory(IDomainEventPublisher domainEventsPublisher)
+    {
+      _domainEventsPublisher = domainEventsPublisher;
+    }
+
     public Purchase Create(AggregateId orderId, Client.Client client, Offer.Offer offer)
     {
       if (!CanPurchse(client, offer.AvailableItems))
@@ -26,6 +33,8 @@ namespace PhotoStock.Sales.Domain.Purchase
 
       Purchase purchase = new Purchase(orderId, client.AggregateId,
         items, Date.Today(), false, purchaseTotlCost);
+
+      _domainEventsPublisher.Publish(new PurchaseCreatedEvent(purchase.AggregateId, purchase.Version, client.GenerateSnapshot()));
 
       return purchase;
     }

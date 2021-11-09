@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace PhotoStock.Sales.WebApp
 {
@@ -7,7 +8,10 @@ namespace PhotoStock.Sales.WebApp
     public static void Main(string[] args)
     {
       Bootstrap.Run(args, builder => { }, 12121);
-      Console.ReadKey();
+      while (true)
+      {
+        Task.Delay(1000).Wait();
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PhotoStock.Sales.Query.Events;
@@ -18,13 +19,16 @@ namespace PhotoStock.Sales.WebApp.EventsController
     }
 
     [HttpGet()]
-    public IActionResult Get([FromQuery]int? lastEventId, [FromQuery]int? count)
+    public ActionResult<EventDto> Get([FromQuery]int? lastEventId, [FromQuery]int? count)
     {
       if (count == null)
       {
         count = 100;
       }
-      return Json(_eventRepository.GetFrom(lastEventId, count.Value).ToArray(), new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Objects });
+      return Json(_eventRepository.GetFrom(lastEventId, count.Value).ToArray(), new JsonSerializerOptions()
+      {
+        WriteIndented = true
+      });
     }
   }
 }

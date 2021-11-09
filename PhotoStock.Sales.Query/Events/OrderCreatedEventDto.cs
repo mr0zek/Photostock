@@ -6,7 +6,7 @@ namespace PhotoStock.Sales.Query.Events
   {
     public AggregateId OrderId { get; private set; }
 
-    public OrderCreatedEventDto(AggregateId orderId, int version) :base(version)
+    public OrderCreatedEventDto(AggregateId orderId, int version) :base(version, "OrderCreatedEvent")
     {
       OrderId = orderId;
     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PhotoStock.Sales.Contract.Events
 {
-  public class OrderConfirmedEvent 
+  public class OrderConfirmedEvent : Event
   {
     public AggregateId OrderId { get; private set; }
     public ClientData ClientData { get; private set; }
@@ -18,3 +18,4 @@ namespace PhotoStock.Sales.Contract.Events
     }
   }
 }
+  
