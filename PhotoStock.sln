@@ -53,10 +53,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotoStock.Sales.Contract",
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D523F857-E2D6-4310-9D2E-43BE66535B81}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rabbit", "Rabbit", "{0EF6EAC5-F8CF-4E25-B05A-79AAC720255E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RabbitMQ", "RabbitMQ", "{0EF6EAC5-F8CF-4E25-B05A-79AAC720255E}"
 	ProjectSection(SolutionItems) = preProject
-		definitions.json = definitions.json
-		rabbitmq.config = rabbitmq.config
+		RabbitMQ\definitions.json = RabbitMQ\definitions.json
+		RabbitMQ\Dockerfile = RabbitMQ\Dockerfile
+		RabbitMQ\rabbitmq.config = RabbitMQ\rabbitmq.config
 	EndProjectSection
 EndProject
 Global

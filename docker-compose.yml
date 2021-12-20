@@ -8,9 +8,15 @@ services:
       dockerfile: PhotoStock.Sales.WebApp/Dockerfile    
   rabbitmq:
     image: rabbitmq:3-management-alpine    
+    build:
+      context: .
+      dockerfile: RabbitMQ/Dockerfile 
     ports:
         - 5672:5672
         - 15672:15672
+    environment:
+        - RABBITMQ_DEFAULT_USER=admin  
+        - RABBITMQ_DEFAULT_PASS=password
     volumes:
         - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
         - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq    

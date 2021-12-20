@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PhotoStock.Invoicing.Contract\PhotoStock.Invoicing.Contract.csproj" />
+    <ProjectReference Include="..\PhotoStock.Sales.Contract\PhotoStock.Sales.Contract.csproj" />
     <ProjectReference Include="..\PhotoStock.Shipping.Contract\PhotoStock.Shipping.Contract.csproj" />
   </ItemGroup>
 
